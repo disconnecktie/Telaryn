@@ -24,7 +24,7 @@ Its declared license distribution at the time of review is:
 
 The less common licenses in the lockfile include:
 
-- **CC-BY-4.0:** `caniuse-lite` (compatibility data; attribution obligations may apply)
+- **CC-BY-4.0:** `caniuse-lite` (browser-compatibility dataset derived from [Can I Use](https://caniuse.com/)). **Attribution:** Browser compatibility data from [caniuse.com](https://caniuse.com/), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The upstream project [requests attribution to caniuse.com](https://github.com/browserslist/caniuse-lite#license).
 - **MPL-2.0:** `lightningcss` and related native platform packages
 - **BlueOak-1.0.0:** `minimatch`
 - **MIT-0:** `@csstools/color-helpers`
@@ -48,16 +48,17 @@ and any libraries or resources included in a redistributed image.
 - `frontend/public/telaryn-mark.svg` and Telaryn product artwork are presented
   under the first-party proprietary notice **only to the extent they are original
   works owned by Telaryn's copyright owner**.
-- The repository also includes framework or starter images such as
-  `frontend/src/assets/react.svg`, `frontend/src/assets/vite.svg` and
-  `frontend/public/favicon.svg`. Third-party framework logos, marks, and similar
-  materials remain subject to their respective owners' rights, not the Telaryn
-  proprietary license.
+- Seven unused assets were excluded from the current release tree after
+  an automated reference audit: four `atlas-icon` PNGs, an unused favicon,
+  and starter React/Vite SVG logos. These older files still exist in historical
+  commits; removal from the current tree does not remove historical copyright
+  or trademark considerations.
 - `frontend/public/icons.svg` contains social-platform glyphs. Brand and
   trademark rights are not granted by access to this repository.
-- The original provenance, licensing, and distribution rights of all eight PNG
-  assets should be verified before approval. Do not assume a successful image
-  transfer establishes copyright ownership.
+- The original provenance, licensing, and distribution rights of the four remaining PNG
+  assets (three Telaryn icons plus `frontend/src/assets/hero.png`) should be
+  verified before approval. Do not assume a successful image transfer establishes
+  copyright ownership.
 
 ## Release handling
 
@@ -66,5 +67,5 @@ dependencies and assets may be distributed in source form, attach or retain
 required copyright notices where relevant, and confirm the hosted application's
 Privacy and Terms policies accurately describe its current behavior.
 
-**Status: initial inventory complete; Python license and asset provenance
-reviews pending.**
+**Status: initial inventory complete; unused starter/legacy assets removed from
+current tree. Python license and remaining image/mark provenance reviews pending.**
