@@ -26,7 +26,8 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [ ] **Third-party rights sign-off:** Confirm exact upstream package notices, Python dependency licenses, applicable image-generation-platform reuse rights, social-brand marks and historical asset files, plus rights to include all materials in a source-available repository. The proprietary LICENSE does not override those rights.
 - [x] **Privacy text/implementation alignment:** Release-candidate Privacy Policy now distinguishes 90-day access-request expiry from actual cleanup triggers, clarifies 90/365-day closed-feedback purge rules and the absence of an in-app scheduler, and explains that screenshot image pixels are not redacted. Added frontend regression tests. Azure infrastructure code configures log retention for 30 days, but active deployment settings require verification.
 - [x] **Production scheduling in private source:** Reviewed the Atlas production Container Apps schedule definition: `0 4 * * *` (04:00 UTC daily) executes `python -m app.cli purge-retained-data`; source and production operations runbook agree on 90/365-day closed-feedback and 90-day access-request retention.
-- [ ] **Live production retention verification:** Confirm the cleanup job is actually deployed, enabled, recently succeeded, and uses the expected backend image and database, without printing secrets or customer data; also confirm operational log/backup settings.
+- [x] **Production cleanup execution history (owner-confirmed):** On 9 November 2026, the owner located the scheduled production cleanup job in Azure Container App Jobs and reported that all displayed executions succeeded. This is an owner observation, not an independent Azure API verification; the exact inspected time window and deployed image/arguments were not captured.
+- [ ] **Remaining live retention configuration:** Confirm the job's deployed image, command, schedule, database target, and absence of missing executions; verify actual operational-log retention and backup lifecycles without disclosing secrets or customer data.
 - [ ] **Contact inbox verification:** The public policy identifies `support@telaryn.app`, `privacy@telaryn.app`, and `security@telaryn.app`, and Atlas documents them as intended identities. Verify each is routable, monitored, and replies to an external test message; source/DNS alone cannot prove functioning inboxes.
 - [x] **Policy revision dated:** Updated the review candidate's privacy revision date to 9 November 2026; this has not been published to the hosted service.
 - [ ] **Legal/terms:** Owner approves `LICENSE`, privacy notice, and hosted-service Terms, including exact production retention execution, deployed log settings, contact addresses, and any notices to active users. Copyright protects original expression, not general software ideas.
@@ -47,12 +48,8 @@ These checks verify running systems, not just configuration in Git. Never paste
 credentials, connection strings, personal messages, customer content or sensitive
 Azure identifiers into a PR comment or public repository.
 
-- [ ] **Azure cleanup:** In the production Azure portal, open Container Apps → Jobs,
-  locate the scheduled retention/cleanup job, verify its cron schedule corresponds
-  to 04:00 UTC daily, then inspect the last several **Executions** for Succeeded.
-  Verify the deployed job executes the application retention command, uses the
-  intended production image/database, and has no recent missed/failed executions.
-  A documented Bicep schedule is not proof the job is deployed or healthy.
+- [x] **Azure cleanup execution results:** The owner located the production cleanup job under Container App Jobs and reported all visible executions as **Succeeded** on 9 November 2026. Independent access to the Azure execution details was not available.
+- [ ] **Azure cleanup deployment details:** Confirm the live scheduled job uses the intended production image, database and `purge-retained-data` command, and that no executions were missed outside the displayed window. The documented Bicep cron is `0 4 * * *` (04:00 UTC daily).
   See the [Microsoft Azure scheduled jobs guide](https://learn.microsoft.com/en-us/azure/container-apps/jobs).
 - [ ] **Live retention:** Compare the actual deployed log retention, PostgreSQL
   managed-backup period, and independent backup lifecycle against approved
