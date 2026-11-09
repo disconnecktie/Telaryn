@@ -1,0 +1,35 @@
+/* Owns the authenticated sign-in boundary presentation. */
+.login-screen { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(circle at top, #262b33 0, #111317 58%); }
+
+.login-card { width: min(420px, 100%); display: grid; gap: 16px; padding: 36px; border: 1px solid #dfe3e8; border-radius: 16px; background: #f8f9fb; color: #24282e; box-shadow: 0 22px 70px rgba(0, 0, 0, 0.38); }
+
+.login-brand { color: #111927; }
+
+.login-brand .atlas-brand__mark { width: 48px; height: 48px; }
+
+.login-brand .atlas-brand__wordmark { font-size: 24px; }
+
+.login-card h1,
+.login-card p { margin: 0; }
+
+.login-card label { display: grid; gap: 7px; color: #4e555f; font-size: 12px; font-weight: 700; }
+
+.login-card input { border: 1px solid #cbd1d8; border-radius: 9px; padding: 11px 12px; background: white; color: #20242a; font: inherit; }
+
+.login-card input:focus { border-color: #6f7885; outline: 3px solid rgba(92, 104, 120, 0.14); }
+
+.login-context { color: #707781; font-size: 13px; line-height: 1.5; }
+
+.login-error { color: #a43844; font-size: 12px; }
+
+.login-actions { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; margin-top: 2px; }
+
+.login-actions .ai-button { width: 100%; }
+
+.login-cancel-button { border: 1px solid #c4cbd4; border-radius: 10px; padding: 11px 14px; background: transparent; color: #4e5968; font: inherit; font-weight: 700; cursor: pointer; }
+
+.login-cancel-button:hover { border-color: #8995a4; background: #edf1f5; color: #172536; }
+
+.login-cancel-button:disabled { cursor: wait; opacity: .6; }
+
+@media (max-width: 420px) { .login-card { padding: 28px 22px; } .login-actions { grid-template-columns: 1fr; } .login-actions .ai-button { grid-row: 1; } }

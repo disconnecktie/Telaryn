@@ -1,0 +1,278 @@
+/* Owns the authenticated Telaryn story and engineering presentation. */
+.about-nav {
+  margin-top: 0;
+}
+
+html[data-theme="light"] .about-card,
+html[data-theme="light"] .about-build,
+html[data-theme="light"] .about-hero {
+  border-color: #cbd2db;
+  background: #fdfefe;
+}
+
+html[data-theme="kruszynko"] .about-card,
+html[data-theme="kruszynko"] .about-build,
+html[data-theme="kruszynko"] .about-hero {
+  border-color: #efd7e2;
+  background: #fffafd;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 32px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+}
+
+.about-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  flex: 0 0 auto;
+}
+
+.about-hero h1 {
+  margin: 6px 0 12px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.about-hero .release-badge { margin-top: 8px; color: #536b86; }
+
+.about-lead {
+  max-width: 720px;
+  margin: 0;
+  color: #656b73;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.about-principle {
+  padding: 28px;
+  border-radius: 18px;
+  background: #1f2733;
+  color: white;
+}
+
+.about-principle h2 {
+  margin: 8px 0 10px;
+  font-size: 28px;
+}
+
+.about-principle p {
+  margin: 0;
+  max-width: 760px;
+  color: #d2d7de;
+  line-height: 1.6;
+}
+
+.about-story,
+.about-engineering {
+  padding: 28px;
+  border: 1px solid #d9e0e8;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(239, 244, 250, 0.9));
+}
+
+.about-story h2,
+.about-engineering h2 {
+  margin: 8px 0 12px;
+  font-size: 27px;
+}
+
+.about-story > p:last-child,
+.about-engineering > div > p:last-child {
+  max-width: 820px;
+  margin: 0;
+  color: #656b73;
+  line-height: 1.65;
+}
+
+.about-engineering {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 32px;
+}
+
+.about-trust-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid #cbd5e1;
+}
+
+.about-trust-list div {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid #d7dfe8;
+}
+
+.about-trust-list dt { color: #60728a; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.about-trust-list dd { margin: 0; color: #1f2f45; font-size: 14px; font-weight: 650; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-card {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.about-card h3 {
+  margin: 8px 0 10px;
+  font-size: 18px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+  color: #656b73;
+  line-height: 1.55;
+}
+
+.about-build {
+  padding: 24px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.about-ownership {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 18px 4px 0;
+  border-top: 1px solid #d7dfe8;
+  color: #697586;
+  font-size: 12px;
+}
+
+.about-ownership p { margin: 0; }
+.about-ownership div { display: flex; flex-wrap: wrap; gap: 10px 16px; }
+.about-ownership a { color: inherit; text-underline-offset: 3px; }
+
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.build-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.build-grid span {
+  color: #8a9098;
+  font-size: 12px;
+}
+
+.build-grid strong {
+  font-size: 14px;
+}
+
+@media (max-width: 1300px) {
+.about-grid {
+    grid-template-columns: 1fr;
+  }
+
+.build-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+.about-hero {
+    align-items: flex-start;
+  }
+
+.about-hero h1 {
+    font-size: 28px;
+  }
+}
+
+.about-engineering {
+    grid-template-columns: 1fr;
+  }
+
+@media (max-width: 700px) {
+.about-hero {
+    flex-direction: column;
+    padding: 22px;
+  }
+
+.about-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+.about-principle {
+    padding: 22px;
+  }
+
+.about-principle h2 {
+    font-size: 23px;
+  }
+
+.build-grid {
+    grid-template-columns: 1fr;
+  }
+
+.about-story,
+.about-engineering {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 800px) {
+html[data-theme] .app-shell .about-page .about-story,
+html[data-theme] .app-shell .about-page .about-engineering,
+html[data-theme] .app-shell .about-page .about-principle {
+    background: var(--mobile-inset);
+    color: var(--mobile-text);
+    border: 1px solid var(--mobile-border);
+  }
+
+html[data-theme] .app-shell .about-page .about-story h2,
+html[data-theme] .app-shell .about-page .about-engineering h2,
+html[data-theme] .app-shell .about-page .about-principle h2 {
+    color: var(--mobile-text);
+  }
+
+html[data-theme] .app-shell .about-page .about-story :is(p,.detail-label),
+html[data-theme] .app-shell .about-page .about-engineering :is(p,.detail-label),
+html[data-theme] .app-shell .about-page .about-principle :is(p,.detail-label) {
+    color: var(--mobile-muted);
+  }
+
+html[data-theme] .app-shell .about-page .about-trust-list {
+    border-top-color: var(--mobile-border);
+  }
+
+html[data-theme] .app-shell .about-page .about-trust-list div {
+    border-bottom-color: var(--mobile-border);
+  }
+
+html[data-theme] .app-shell .about-page .about-trust-list :is(dt,dd) {
+    color: var(--mobile-text);
+  }
+
+html[data-theme] .app-shell .about-page .about-ownership { color: var(--mobile-muted); border-color: var(--mobile-border); }
+}

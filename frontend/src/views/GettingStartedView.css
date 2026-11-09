@@ -1,0 +1,108 @@
+/* Presents the persistent Getting Started guide clearly on mobile and desktop. */
+.getting-started { min-height: 100%; color: var(--text-primary, #f4f7fb); }
+.getting-started.is-public { width: 100%; min-height: 100vh; padding: 20px clamp(20px, 5vw, 88px) 0; }
+.getting-started.is-public > :not(.public-footer) { width: min(1120px, 100%); margin-inline: auto; }
+.getting-started-public-nav { margin-bottom: clamp(32px, 5vw, 52px); }
+.getting-started-hero { max-width: 980px; }
+.getting-started.is-signed-in .getting-started-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 320px); gap: clamp(28px, 5vw, 64px); align-items: end; margin: 22px 0 0 clamp(0px, 3vw, 42px); padding: clamp(28px, 4vw, 48px); border: 1px solid #3b526d; border-radius: 22px; background: linear-gradient(135deg, #17283c 0%, #101c2a 72%); box-shadow: 0 22px 55px rgba(4, 10, 18, .18); }
+.getting-started.is-signed-in:not(.is-empty-workspace) .getting-started-hero { grid-template-columns: minmax(0, 780px); }
+.getting-started-hero-copy { min-width: 0; }
+.getting-started-hero h1 { margin: 8px 0 16px; font-size: clamp(2.5rem, 6vw, 5rem); line-height: .98; }
+.getting-started-lede { max-width: 680px; margin: 0; color: #d8e4f2; font-size: 1.2rem; font-weight: 520; line-height: 1.6; }
+.getting-started-empty-cue { padding: 20px; border: 1px solid #47617e; border-radius: 15px; background: rgba(37, 62, 88, .55); }
+.getting-started-empty-cue span { display: block; margin-bottom: 10px; color: #91add0; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.getting-started-empty-cue strong { display: block; color: #fff; font-size: 1.05rem; }
+.getting-started-empty-cue p { margin: 8px 0 0; color: #c5d4e5; font-size: .9rem; line-height: 1.5; }
+.getting-started-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.getting-started-loop { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 46px 0; }
+.getting-started-loop article { display: flex; gap: 16px; padding: 24px; border: 1px solid #3e5672; border-radius: 16px; background: #172536; }
+.getting-started-loop article > span { display: grid; flex: 0 0 34px; place-items: center; height: 34px; border-radius: 999px; background: #315f91; font-weight: 800; }
+.getting-started-loop h2 { margin: 2px 0 8px; }
+.getting-started-loop p, .getting-started-example > p { margin: 0; color: #b8c8db; line-height: 1.55; }
+.getting-started-example { margin-bottom: 20px; padding: 30px; border-radius: 18px; background: #0f1b29; border: 1px solid #344b65; }
+.getting-started-example blockquote { margin: 24px 0 16px; padding: 18px 20px; border-left: 4px solid #64a5eb; background: #17283b; font-size: 1.05rem; line-height: 1.55; }
+.getting-started-install { margin-bottom: 36px; padding: 30px; border: 1px solid #3e5672; border-radius: 18px; background: linear-gradient(135deg, #17283c, #101c2a); }
+.getting-started-install-intro { max-width: 720px; }
+.getting-started-install h2 { margin: 7px 0 10px; }
+.getting-started-install-intro > p:last-child { margin: 0; color: #c3d1e1; line-height: 1.55; }
+.getting-started-install-platforms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 24px 0 18px; }
+.getting-started-install-platforms > article { min-width: 0; padding: 18px; border: 1px solid #49617d; border-radius: 14px; background: rgba(9, 20, 32, .35); }
+.getting-started-install-platform { display: flex; align-items: baseline; gap: 8px; margin-bottom: 15px; }
+.getting-started-install-platform span { color: #f2f6fb; font-size: 1.05rem; font-weight: 800; }
+.getting-started-install-platform strong { color: #91add0; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+.getting-started-install-steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.getting-started-install-steps li { display: flex; gap: 12px; padding: 16px; border: 1px solid #49617d; border-radius: 12px; background: rgba(9, 20, 32, .45); }
+.getting-started-install-steps li > span { display: grid; flex: 0 0 27px; place-items: center; height: 27px; border-radius: 999px; background: #315f91; color: #fff; font-weight: 800; }
+.getting-started-install-steps strong { color: #f2f6fb; }
+.getting-started-install-steps p { margin: 5px 0 0; color: #c3d1e1; font-size: .86rem; line-height: 1.45; }
+.getting-started-install-note { margin: 0; color: #91add0; font-size: .8rem; line-height: 1.5; }
+html[data-theme="light"] .getting-started { color: #172536; }
+html[data-theme="light"] .getting-started-lede, html[data-theme="light"] .getting-started-loop p, html[data-theme="light"] .getting-started-example > p { color: #46596f; }
+html[data-theme="light"] .getting-started.is-signed-in .getting-started-hero { border-color: #c5d3e2; background: linear-gradient(135deg, #f7faff, #edf4fb); box-shadow: 0 22px 55px rgba(40, 68, 99, .1); }
+html[data-theme="light"] .getting-started-empty-cue { border-color: #bdcee0; background: rgba(255, 255, 255, .72); }
+html[data-theme="light"] .getting-started-empty-cue span { color: #486d98; }
+html[data-theme="light"] .getting-started-empty-cue strong { color: #172536; }
+html[data-theme="light"] .getting-started-empty-cue p { color: #52657a; }
+html[data-theme="kruszynko"] .getting-started.is-signed-in .getting-started-hero { border-color: #d9a9bf; background: linear-gradient(135deg, #fff7fb, #f7e4ee); box-shadow: 0 22px 55px rgba(113, 48, 79, .1); }
+html[data-theme="kruszynko"] .getting-started { color: #50233b; }
+html[data-theme="kruszynko"] .getting-started-lede { color: #63364d; }
+html[data-theme="kruszynko"] .getting-started-empty-cue { border-color: #d7a3bc; background: rgba(255, 255, 255, .62); }
+html[data-theme="kruszynko"] .getting-started-empty-cue span { color: #96496e; }
+html[data-theme="kruszynko"] .getting-started-empty-cue strong { color: #50233b; }
+html[data-theme="kruszynko"] .getting-started-empty-cue p { color: #79475f; }
+html[data-theme="kruszynko"] .getting-started-loop article { border-color: #d9a9bf; background: #fff7fb; }
+html[data-theme="kruszynko"] .getting-started-loop article > span { background: #96496e; color: #fff; }
+html[data-theme="kruszynko"] .getting-started-loop p,
+html[data-theme="kruszynko"] .getting-started-example > p { color: #63364d; }
+html[data-theme="kruszynko"] .getting-started-example { border-color: #d9a9bf; background: #fff7fb; }
+html[data-theme="kruszynko"] .getting-started-example blockquote { border-left-color: #b35f87; background: #f4dce8; color: #50233b; }
+html[data-theme="light"] .getting-started-loop article, html[data-theme="light"] .getting-started-example { background: #fff; border-color: #c5d3e2; }
+html[data-theme="light"] .getting-started-example blockquote { background: #edf5fd; }
+html[data-theme="light"] .getting-started-install { border-color: #c5d3e2; background: linear-gradient(135deg, #f7faff, #edf4fb); }
+html[data-theme="light"] .getting-started-install-intro > p:last-child, html[data-theme="light"] .getting-started-install-steps p { color: #4f6074; }
+html[data-theme="light"] .getting-started-install-steps li { border-color: #c8d5e4; background: #fff; }
+html[data-theme="light"] .getting-started-install-platforms > article { border-color: #c8d5e4; background: rgba(255, 255, 255, .7); }
+html[data-theme="light"] .getting-started-install-platform span { color: #172536; }
+html[data-theme="light"] .getting-started-install-platform strong { color: #486d98; }
+html[data-theme="light"] .getting-started-install-steps strong { color: #172536; }
+html[data-theme="light"] .getting-started-install-note { color: #486d98; }
+html[data-theme="kruszynko"] .getting-started-install { border-color: #d9a9bf; background: linear-gradient(135deg, #fff7fb, #f4dce8); }
+html[data-theme="kruszynko"] .getting-started-install-intro > p:last-child, html[data-theme="kruszynko"] .getting-started-install-steps p { color: #704058; }
+html[data-theme="kruszynko"] .getting-started-install-steps li { border-color: #d9a9bf; background: rgba(255, 255, 255, .72); }
+html[data-theme="kruszynko"] .getting-started-install-platforms > article { border-color: #d9a9bf; background: rgba(255, 255, 255, .52); }
+html[data-theme="kruszynko"] .getting-started-install-platform span { color: #50233b; }
+html[data-theme="kruszynko"] .getting-started-install-platform strong { color: #96496e; }
+html[data-theme="kruszynko"] .getting-started-install-steps li > span { background: #96496e; }
+html[data-theme="kruszynko"] .getting-started-install-steps strong { color: #50233b; }
+html[data-theme="kruszynko"] .getting-started-install-note { color: #96496e; }
+/* The signed-out guide is part of the public About experience, not an
+   authenticated theme surface. Keep it on the same navy public palette as /#/. */
+html[data-theme] .getting-started.is-public {
+  background:
+    radial-gradient(circle at 82% 4%, rgba(67, 118, 181, .3), transparent 32rem),
+    linear-gradient(180deg, #162231 0%, #111a26 58%, #152131 100%);
+  color: #f2f5f8;
+}
+html[data-theme] .getting-started.is-public :is(h1, h2, .getting-started-install-platform span) { color: #f4f7fb; }
+html[data-theme] .getting-started.is-public .eyebrow { color: #91a4bb; }
+html[data-theme] .getting-started.is-public .getting-started-actions .ai-button { border: 1px solid #5494ed; background: #2878dc; color: #fff; box-shadow: 0 10px 24px rgba(10, 44, 89, .36); }
+html[data-theme] .getting-started.is-public .getting-started-actions .ai-button:hover { border-color: #75aeff; background: #3b88eb; }
+html[data-theme] .getting-started.is-public .getting-started-lede { color: #d0dae5; }
+html[data-theme] .getting-started.is-public .getting-started-loop article,
+html[data-theme] .getting-started.is-public .getting-started-example,
+html[data-theme] .getting-started.is-public .getting-started-install { border-color: #34465b; background: rgba(23, 37, 54, .78); box-shadow: 0 18px 44px rgba(4, 10, 18, .16); }
+html[data-theme] .getting-started.is-public .getting-started-loop article > span,
+html[data-theme] .getting-started.is-public .getting-started-install-steps li > span { background: #315f91; color: #fff; }
+html[data-theme] .getting-started.is-public .getting-started-loop p,
+html[data-theme] .getting-started.is-public .getting-started-example > p { color: #bdcad8; }
+html[data-theme] .getting-started.is-public .getting-started-example blockquote { border-left-color: #64a5eb; background: #101c2a; color: #dce7f2; }
+html[data-theme] .getting-started.is-public .getting-started-install-intro > p:last-child,
+html[data-theme] .getting-started.is-public .getting-started-install-steps p { color: #bdcad8; }
+html[data-theme] .getting-started.is-public .getting-started-install-platforms > article { border-color: #49617d; background: rgba(9, 20, 32, .35); }
+html[data-theme] .getting-started.is-public .getting-started-install-platform span,
+html[data-theme] .getting-started.is-public .getting-started-install-steps strong { color: #f2f6fb; }
+html[data-theme] .getting-started.is-public .getting-started-install-platform strong,
+html[data-theme] .getting-started.is-public .getting-started-install-note { color: #91add0; }
+html[data-theme] .getting-started.is-public .getting-started-install-steps li { border-color: #49617d; background: rgba(9, 20, 32, .45); }
+@media (max-width: 1200px) { .getting-started.is-signed-in .getting-started-hero { grid-template-columns: minmax(0, 1fr); align-items: start; margin-left: 0; } .getting-started-empty-cue { max-width: 620px; } }
+@media (max-width: 700px) { .getting-started.is-public { padding: 20px 18px 0; } .getting-started-public-nav { margin-bottom: 30px; } .getting-started.is-signed-in .getting-started-hero { margin-top: 4px; padding: 23px 20px; border-radius: 17px; } .getting-started-hero h1 { font-size: clamp(2.35rem, 12vw, 3.6rem); } .getting-started-lede { color: #e2ebf6; font-size: 1.05rem; line-height: 1.55; } html[data-theme="light"] .getting-started-lede { color: #3f5369; } html[data-theme="kruszynko"] .getting-started-lede { color: #63364d; } .getting-started-loop { grid-template-columns: 1fr; margin-top: 32px; } .getting-started-loop article, .getting-started-example, .getting-started-install { padding: 19px; } .getting-started-install-platforms { grid-template-columns: 1fr; } }
