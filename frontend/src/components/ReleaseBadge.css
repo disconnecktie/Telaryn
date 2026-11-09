@@ -1,0 +1,18 @@
+/* Keep release identity compact, legible, and theme-independent. */
+.release-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 8px;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.release-badge strong { letter-spacing: 0.04em; }
+.release-badge__build { opacity: 0.72; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+

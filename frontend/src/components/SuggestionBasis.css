@@ -1,0 +1,36 @@
+/* Styles the shared AI suggestion-basis badges and their explanatory legend. */
+.suggestion-basis {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.suggestion-basis-supported { color: #347a57; background: #e7f4eb; }
+.suggestion-basis-inferred { color: #42658f; background: #e8f0fa; }
+.suggestion-basis-recommended { color: #8b6219; background: #fbf1d8; }
+
+.suggestion-basis-legend {
+  margin-top: 12px;
+  color: #69717c;
+  font-size: 12px;
+}
+
+.suggestion-basis-legend summary { cursor: pointer; font-weight: 700; }
+.suggestion-basis-legend dl { display: grid; gap: 8px; margin: 10px 0 0; }
+.suggestion-basis-legend dl > div { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; }
+.suggestion-basis-legend dt, .suggestion-basis-legend dd { margin: 0; }
+
+html[data-theme="night"] .suggestion-basis-supported,
+html[data-theme="mixed"] .suggestion-basis-supported { color: #8bd7a7; background: #183d2d; }
+html[data-theme="night"] .suggestion-basis-inferred,
+html[data-theme="mixed"] .suggestion-basis-inferred { color: #9fc5f0; background: #203a59; }
+html[data-theme="night"] .suggestion-basis-recommended,
+html[data-theme="mixed"] .suggestion-basis-recommended { color: #efd18e; background: #4b3918; }
