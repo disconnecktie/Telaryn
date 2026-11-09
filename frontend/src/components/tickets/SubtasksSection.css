@@ -1,0 +1,29 @@
+/* Focused Subtask layout, editing controls, and scoped responsive behavior. */
+.add-subtask-button {
+  border: 1px solid #cdd2d9;
+  border-radius: 8px;
+  padding: 6px 9px;
+  background: white;
+  color: #343a42;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-subtask-button:hover {
+  border-color: #9da4ae;
+  background: #f6f7f9;
+}
+
+.empty-structure-add-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+html[data-theme="kruszynko"] .add-subtask-button {
+  border-color: #d59ab6;
+  background: #fff1f6;
+  color: #71304f;
+}

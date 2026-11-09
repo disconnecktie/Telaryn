@@ -1,0 +1,36 @@
+/* Keeps stable nested-work references useful, copyable, and visually secondary. */
+.structure-reference {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin-top: 5px;
+  padding: 1px 0;
+  color: var(--muted-color, #747981);
+  font-size: 9px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.035em;
+  line-height: 1.4;
+  opacity: 0.78;
+  user-select: text;
+  cursor: text;
+}
+
+.structure-reference.pending {
+  border: 1px dashed var(--border-color, rgba(127, 127, 127, 0.3));
+  border-radius: 5px;
+  padding: 1px 5px;
+  opacity: 1;
+  font-weight: 650;
+}
+
+.structure-item-editor > .structure-reference,
+.subtask-edit-row > .structure-reference {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.scope-item-copy > .structure-reference {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 3px;
+}
