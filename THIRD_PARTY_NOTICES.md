@@ -59,10 +59,16 @@ texts and distributed binary contents.
   or trademark considerations.
 - `frontend/public/icons.svg` contains social-platform glyphs. Brand and
   trademark rights are not granted by access to this repository.
-- The original provenance, licensing, and distribution rights of the four remaining PNG
-  assets (three Telaryn icons plus `frontend/src/assets/hero.png`) should be
-  verified before approval. Do not assume a successful image transfer establishes
-  copyright ownership.
+- **Owner-provided provenance statement (9 November 2026):** The Telaryn
+  owner confirmed they personally generated all four PNG assets remaining in
+  the current source tree: `frontend/public/telaryn-apple-touch-icon.png`,
+  `frontend/public/telaryn-icon-192.png`,
+  `frontend/public/telaryn-icon-512.png`, and
+  `frontend/src/assets/hero.png`. No outside asset-source attribution was
+  identified by the owner. This records provenance as reported, not
+  independently verified exclusive copyright ownership or the generation
+  platform's commercial/distribution terms. AI-generated elements may have
+  limited copyright protection depending on jurisdiction and human authorship.
 
 ## Release handling
 
@@ -71,6 +77,7 @@ dependencies and assets may be distributed in source form, attach or retain
 required copyright notices where relevant, and confirm the hosted application's
 Privacy and Terms policies accurately describe its current behavior.
 
-**Status: JS and Python package metadata inventories complete; unused starter/legacy assets
-removed from the current tree. Copyleft-related notices and image/mark provenance
-reviews are pending.**
+**Status: JS/Python package metadata inventories complete; unused starter/legacy
+assets removed. Owner-attested provenance recorded for the four remaining PNGs.
+Final upstream license, platform terms, social marks and historical asset review
+remain pending.**
