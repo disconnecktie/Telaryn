@@ -1,0 +1,20 @@
+# Keep local state, credentials, caches, and editor artifacts out of build contexts.
+.git
+.github
+.venv
+__pycache__
+*.py[cod]
+.pytest_cache
+frontend/node_modules
+frontend/dist
+atlas.db
+*.db
+.env
+.env.*
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+scripts/local-exports
+coverage
+htmlcov

@@ -1,0 +1,4 @@
+# Development and CI dependencies build on the production runtime set.
+-r requirements.txt
+
+pytest==9.1.1

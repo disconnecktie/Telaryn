@@ -1,0 +1,66 @@
+# Production-like local integration. Native Vite, FastAPI, and SQLite remain unchanged.
+name: atlas
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_URL: /api
+    ports:
+      - "${ATLAS_GATEWAY_PORT:-8080}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgresql+psycopg://${ATLAS_POSTGRES_USER:-atlas}:${ATLAS_POSTGRES_PASSWORD:-atlas-local-development-only}@postgres:5432/${ATLAS_POSTGRES_DB:-atlas}
+      ATLAS_FRONTEND_ORIGINS: http://localhost:${ATLAS_GATEWAY_PORT:-8080}
+      ATLAS_BOOTSTRAP_USER_EMAIL: atlas.local@example.com
+      ATLAS_BOOTSTRAP_USER_DISPLAY_NAME: Telaryn Container User
+      ATLAS_BOOTSTRAP_WORKSPACE_NAME: Telaryn Container Workspace
+      ATLAS_SESSION_COOKIE_SECURE: "false"
+      ATLAS_LOG_FORMAT: human
+      AI_PROVIDER: mock
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${ATLAS_POSTGRES_DB:-atlas}
+      POSTGRES_USER: ${ATLAS_POSTGRES_USER:-atlas}
+      POSTGRES_PASSWORD: ${ATLAS_POSTGRES_PASSWORD:-atlas-local-development-only}
+    volumes:
+      - atlas_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${ATLAS_POSTGRES_USER:-atlas} -d ${ATLAS_POSTGRES_DB:-atlas}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  atlas_postgres_data:
+
