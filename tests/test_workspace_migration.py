@@ -99,15 +99,17 @@ class WorkspaceMigrationTests(unittest.TestCase):
                     "ATLAS_BOOTSTRAP_USER_EMAIL",
                     "ATLAS_BOOTSTRAP_USER_DISPLAY_NAME",
                     "ATLAS_BOOTSTRAP_WORKSPACE_NAME",
+                    "ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED",
                 ):
                     os.environ.pop(variable, None)
                 command.upgrade(config, "a107b010c001")
 
             environment = {
                 "ENVIRONMENT": "production",
-                "ATLAS_BOOTSTRAP_USER_EMAIL": "admin@telaryn.app",
-                "ATLAS_BOOTSTRAP_USER_DISPLAY_NAME": "Telaryn Administrator",
-                "ATLAS_BOOTSTRAP_WORKSPACE_NAME": "Telaryn Administration",
+                "ATLAS_BOOTSTRAP_USER_EMAIL": "owner@example.test",
+                "ATLAS_BOOTSTRAP_USER_DISPLAY_NAME": "Release Administrator",
+                "ATLAS_BOOTSTRAP_WORKSPACE_NAME": "Release Administration",
+                "ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED": "yes",
             }
             with patch.dict(os.environ, environment, clear=False):
                 command.upgrade(config, "head")
@@ -127,7 +129,59 @@ class WorkspaceMigrationTests(unittest.TestCase):
 
             self.assertEqual(
                 user,
-                (1, "admin@telaryn.app", "Telaryn Administrator", None),
+                (1, "owner@example.test", "Release Administrator", None),
             )
-            self.assertEqual(workspace, (1, "Telaryn Administration", 1))
+            self.assertEqual(workspace, (1, "Release Administration", 1))
             self.assertEqual(membership, (1, 1, "owner"))
+
+    def test_production_repair_requires_explicit_approval(self) -> None:
+        """Fail closed when a placeholder exists but the operator has not opted in."""
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            database_path = Path(temporary_directory) / "unapproved-repair.db"
+            config = self._config_for(database_path)
+            with patch.dict(os.environ, {}, clear=False):
+                for variable in (
+                    "ENVIRONMENT",
+                    "ATLAS_BOOTSTRAP_USER_EMAIL",
+                    "ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED",
+                ):
+                    os.environ.pop(variable, None)
+                command.upgrade(config, "a107b010c001")
+
+            with patch.dict(
+                os.environ,
+                {
+                    "ENVIRONMENT": "production",
+                    "ATLAS_BOOTSTRAP_USER_EMAIL": "owner@example.test",
+                },
+                clear=False,
+            ):
+                os.environ.pop("ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED", None)
+                with self.assertRaisesRegex(RuntimeError, "explicit"):
+                    command.upgrade(config, "a108b010c002")
+
+            engine = create_engine(f"sqlite:///{database_path}")
+            with engine.connect() as connection:
+                user = connection.execute(text("SELECT email FROM users")).scalar_one()
+            engine.dispose()
+            self.assertEqual(user, "atlas.local@example.com")
+
+    def test_production_owner_already_correct_needs_no_repair_approval(self) -> None:
+        """No-op when the deployment already bootstrapped its configured owner."""
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            database_path = Path(temporary_directory) / "correct-owner.db"
+            config = self._config_for(database_path)
+            environment = {
+                "ENVIRONMENT": "production",
+                "ATLAS_BOOTSTRAP_USER_EMAIL": "owner@example.test",
+                "ATLAS_BOOTSTRAP_USER_DISPLAY_NAME": "Release Administrator",
+            }
+            with patch.dict(os.environ, environment, clear=False):
+                os.environ.pop("ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED", None)
+                command.upgrade(config, "a108b010c002")
+
+            engine = create_engine(f"sqlite:///{database_path}")
+            with engine.connect() as connection:
+                user = connection.execute(text("SELECT email FROM users")).scalar_one()
+            engine.dispose()
+            self.assertEqual(user, "owner@example.test")
