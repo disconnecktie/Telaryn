@@ -1,0 +1,111 @@
+/* Owns Settings and theme-selection presentation. */
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.settings-section {
+  max-width: 900px;
+  padding: 28px;
+  border: 1px solid #e2e5e9;
+  border-radius: 18px;
+  background: white;
+}
+
+.settings-section h2 {
+  margin: 0;
+}
+
+.settings-section .muted {
+  margin: 7px 0 0;
+}
+
+.settings-release { display: grid; gap: 18px; }
+.settings-release .release-badge { justify-self: start; color: #536b86; }
+.settings-release > p { margin: 0; color: #707680; font-size: 12px; }
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.theme-preview {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+  height: 88px;
+  margin-bottom: 6px;
+  padding: 10px;
+  border-radius: 9px;
+  background: #f4f5f7;
+}
+
+.theme-preview i {
+  display: block;
+  border-radius: 5px;
+  background: white;
+}
+
+.theme-preview i:first-child {
+  grid-row: 1 / 3;
+  background: #15171b;
+}
+
+.theme-option.light .theme-preview {
+  border: 1px solid #e4e6ea;
+  background: #fff;
+}
+
+.theme-option.light .theme-preview i {
+  background: #eef0f3;
+}
+
+.theme-option.light .theme-preview i:first-child {
+  background: #e2e5e9;
+}
+
+.theme-option.kruszynko .theme-preview {
+  background: #fff1f6;
+}
+
+.theme-option.kruszynko .theme-preview i {
+  background: #fffafd;
+}
+
+.theme-option.kruszynko .theme-preview i:first-child {
+  background: #6f294b;
+}
+
+html[data-theme="light"] .settings-section {
+  border-color: #cbd2db;
+  background: #fdfefe;
+}
+
+html[data-theme="kruszynko"] .settings-section {
+  border-color: #efd7e2;
+  background: #fffafd;
+}
+
+@media (max-width: 1000px) {
+.theme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+html[data-theme] .app-shell .settings-back-button {
+    margin-top: 18px;
+    margin-bottom: 0;
+    min-height: 44px;
+    padding: 10px 14px;
+    background: var(--mobile-surface);
+    color: var(--mobile-text);
+    border: 1px solid var(--mobile-border);
+    border-radius: 9px;
+  }
+}
