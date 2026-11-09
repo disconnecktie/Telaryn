@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 ALLOWED_ROOT_FILES = {
     ".dockerignore", ".gitattributes", ".gitignore", "Dockerfile",
-    "LICENSE", "README.md", "SECURITY.md", "alembic.ini",
+    "LICENSE", "README.md", "SECURITY.md", "THIRD_PARTY_NOTICES.md", "alembic.ini",
     "compose.yaml", "requirements-dev.txt", "requirements.txt",
 }
 ALLOWED_DOCS = {
