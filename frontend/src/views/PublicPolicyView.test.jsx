@@ -24,3 +24,22 @@ describe("Telaryn public Terms", () => {
     expect(within(section).getByText(/You retain ownership of the content you submit/i)).toBeInTheDocument();
   });
 });
+
+
+describe("Telaryn public Privacy", () => {
+  test("describes real retention triggers and closed-feedback periods", () => {
+    render(<PublicPolicyView policy="privacy" onSignIn={vi.fn()} />);
+    const section = screen.getByRole("heading", { name: "Retention" }).closest("section");
+    expect(within(section).getByText(/access requests expire after 90 days/i)).toBeInTheDocument();
+    expect(within(section).getByText(/a new access request triggers cleanup/i)).toBeInTheDocument();
+    expect(within(section).getByText(/screenshots are eligible for removal 90 days after closure/i)).toBeInTheDocument();
+    expect(within(section).getByText(/365 days after closure/i)).toBeInTheDocument();
+    expect(within(section).getByText(/the administrative retention command performs this cleanup when run/i)).toBeInTheDocument();
+    expect(within(section).getByText(/feedback that remains open is not covered/i)).toBeInTheDocument();
+  });
+
+  test("does not promise that screenshot pixels are redacted", () => {
+    render(<PublicPolicyView policy="privacy" onSignIn={vi.fn()} />);
+    expect(screen.getByText(/visible information in the image is not automatically redacted/i)).toBeInTheDocument();
+  });
+});
