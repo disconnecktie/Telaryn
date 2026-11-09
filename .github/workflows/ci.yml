@@ -23,6 +23,8 @@ jobs:
           python-version: "3.12"
       - name: Check reviewed paths and known sensitive markers
         run: python scripts/verify_source_snapshot.py
+      - name: Check all reachable private Git history for excluded paths
+        run: python scripts/verify_source_snapshot.py --history-audit
 
   publication-gate:
     name: Public release gate (expected to fail until reviewed)
