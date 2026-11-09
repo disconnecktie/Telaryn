@@ -24,7 +24,7 @@ ALLOWED_DOCS = {
     "docs/source-release-checklist.md",
 }
 ALLOWED_SCRIPTS = {"scripts/verify_source_snapshot.py"}
-ALLOWED_WORKFLOWS = {".github/workflows/ci.yml"}
+ALLOWED_WORKFLOWS = {".github/workflows/ci.yml", ".github/workflows/private-history-secret-audit.yml"}
 SOURCE_PREFIXES = ("app/", "frontend/", "alembic/", "tests/")
 
 SENSITIVE_PATTERNS = {
