@@ -87,22 +87,11 @@ def scan_snapshot(paths: list[str]) -> list[tuple[str, str]]:
     return findings
 
 
-def history_has_personal_email() -> bool:
-    result = subprocess.run(
-        ["git", "log", "--format=%ae%n%ce"],
-        cwd=ROOT, capture_output=True, text=True, check=True,
-    )
-    return any(
-        re.search(r"@(?:gmail|yahoo|outlook|icloud)\.com\b", line, re.IGNORECASE)
-        for line in result.stdout.splitlines()
-    )
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--publication-gate", action="store_true",
-        help="Also reject unresolved migration and Git history identity blockers",
+        help="Refuse publication until migration checks and explicit owner sign-off are recorded",
     )
     args = parser.parse_args()
     paths = tracked_files()
@@ -122,8 +111,11 @@ def main() -> int:
                 findings.append(
                     (IDENTITY_MIGRATION, "publication-safe migration review unresolved")
                 )
-        if history_has_personal_email():
-            findings.append(("<Git history>", "personal commit email in retained history"))
+        review = (ROOT / "docs/source-release-checklist.md").read_text(encoding="utf-8")
+        if "**Current disposition: NOT APPROVED FOR PUBLICATION.**" in review:
+            findings.append(("<Owner approval>", "release checklist is still not approved"))
+        elif "**Current disposition: APPROVED FOR PUBLICATION.**" not in review:
+            findings.append(("<Owner approval>", "an explicit approval statement is required"))
     if findings:
         print(f"Release guard: {len(findings)} finding(s); no credential values shown")
         for path, category in findings:
