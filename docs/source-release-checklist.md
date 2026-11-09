@@ -28,7 +28,7 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [x] **Production scheduling in private source:** Reviewed the Atlas production Container Apps schedule definition: `0 4 * * *` (04:00 UTC daily) executes `python -m app.cli purge-retained-data`; source and production operations runbook agree on 90/365-day closed-feedback and 90-day access-request retention.
 - [x] **Production cleanup execution history (owner-confirmed):** On 9 November 2026, the owner located the scheduled production cleanup job in Azure Container App Jobs and reported that all displayed executions succeeded. This is an owner observation, not an independent Azure API verification; the exact inspected time window and deployed image/arguments were not captured.
 - [ ] **Remaining live retention configuration:** Confirm the job's deployed image, command, schedule, database target, and absence of missing executions; verify actual operational-log retention and backup lifecycles without disclosing secrets or customer data.
-- [ ] **Contact inbox verification:** The public policy identifies `support@telaryn.app`, `privacy@telaryn.app`, and `security@telaryn.app`, and Atlas documents them as intended identities. Verify each is routable, monitored, and replies to an external test message; source/DNS alone cannot prove functioning inboxes.
+- [x] **Public contact inboxes (owner-confirmed):** On 9 November 2026, the owner confirmed that `support@telaryn.app`, `privacy@telaryn.app`, and `security@telaryn.app` are configured and working properly. This records owner attestation, not independently observed inbound/outbound message delivery.
 - [x] **Policy revision dated:** Updated the review candidate's privacy revision date to 9 November 2026; this has not been published to the hosted service.
 - [ ] **Legal/terms:** Owner approves `LICENSE`, privacy notice, and hosted-service Terms, including exact production retention execution, deployed log settings, contact addresses, and any notices to active users. Copyright protects original expression, not general software ideas.
 - [x] **Backend and local migration CI:** Backend tests and local PostgreSQL migration smoke passed in [#42662313813](https://github.com/disconnecktie/Telaryn/actions/runs/42662313813).
@@ -55,11 +55,9 @@ Azure identifiers into a PR comment or public repository.
   managed-backup period, and independent backup lifecycle against approved
   runbook values (30 days of operational logs; 14 days for the two backup
   channels). Review actual Azure configuration without exporting data.
-- [ ] **Inbound contact tests:** Confirm that support, privacy and security
-  contact identities each accept an external test email and that the appropriate
-  operator can respond. Azure Communication Services outbound sending
-  configuration and a domain's MX records alone do not establish inbound
-  alias/mailbox routing.
+- [x] **Inbound contact operation (owner-confirmed):** Owner confirms all three
+  support, privacy and security email addresses work properly in Microsoft 365.
+  No independent external test mail or mailbox evidence was retrieved in this review.
 - [ ] **Public content review:** Approve the user-visible About page, founder
   biography/LinkedIn/GitHub links, devlog engineering timeline, policy
   contacts, legal terms and updated Privacy revision effective date.
