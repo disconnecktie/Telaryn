@@ -86,15 +86,80 @@ def scan_snapshot(paths: list[str]) -> list[tuple[str, str]]:
     return findings
 
 
+
+# These two review-only files existed in earlier private candidate commits and
+# were subsequently removed. They are safe path exceptions, not release inputs.
+RETIRED_REVIEW_PATHS = {
+    "docs/clean-history-publication-plan.md",
+    "scripts/prepare_clean_release.py",
+}
+
+
+def scan_reachable_history() -> tuple[list[tuple[str, str]], int, int]:
+    """Inspect reachable commit trees and their unique text blobs without outputting values."""
+    commits = subprocess.run(
+        ["git", "rev-list", "--all"], cwd=ROOT, capture_output=True,
+        text=True, check=True,
+    ).stdout.splitlines()
+    inspected_blobs: set[str] = set()
+    findings: set[tuple[str, str]] = set()
+    for revision in commits:
+        tree = subprocess.run(
+            ["git", "ls-tree", "-rz", revision], cwd=ROOT,
+            capture_output=True, check=True,
+        ).stdout
+        for raw_entry in tree.split(b"\0"):
+            if not raw_entry:
+                continue
+            metadata, raw_path = raw_entry.split(b"\t", 1)
+            fields = metadata.decode("ascii").split()
+            if len(fields) != 3 or fields[1] != "blob":
+                continue
+            blob_sha = fields[2]
+            path = raw_path.decode("utf-8")
+            if not acceptable_path(path) and path not in RETIRED_REVIEW_PATHS:
+                findings.add((path, "historical file outside reviewed source boundary"))
+            if blob_sha in inspected_blobs:
+                continue
+            inspected_blobs.add(blob_sha)
+            if path in ALLOWED_SCRIPTS or path == "scripts/prepare_clean_release.py":
+                # Scanner code contains literal detection patterns. A separate
+                # Gitleaks scan must still inspect these scripts and history.
+                continue
+            if path.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico")):
+                continue
+            content = subprocess.run(
+                ["git", "cat-file", "blob", blob_sha], cwd=ROOT,
+                capture_output=True, check=True,
+            ).stdout
+            try:
+                text_content = content.decode("utf-8")
+            except UnicodeDecodeError:
+                findings.add((path, "historical non-UTF8 nonimage file"))
+                continue
+            for category, expression in SENSITIVE_PATTERNS.items():
+                if expression.search(text_content):
+                    findings.add((path, "historical " + category))
+    return sorted(findings), len(commits), len(inspected_blobs)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--publication-gate", action="store_true",
         help="Refuse publication until migration checks and explicit owner sign-off are recorded",
     )
+    parser.add_argument(
+        "--history-audit", action="store_true",
+        help="Scan all reachable commit trees for excluded paths and known private identifiers",
+    )
     args = parser.parse_args()
     paths = tracked_files()
     findings = scan_snapshot(paths)
+    if args.history_audit or args.publication_gate:
+        history_findings, commits, blobs = scan_reachable_history()
+        findings.extend(history_findings)
+        print(f"History audit inspected {commits} commits and {blobs} unique blobs")
     if args.publication_gate:
         if IDENTITY_MIGRATION in paths:
             migration = (ROOT / IDENTITY_MIGRATION).read_text(encoding="utf-8")
