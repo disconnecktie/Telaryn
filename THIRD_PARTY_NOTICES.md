@@ -39,9 +39,13 @@ distributed bundles before shipping a packaged client or modified third-party li
 
 `requirements.txt` and `requirements-dev.txt` include FastAPI, SQLAlchemy,
 Alembic, Azure SDK components, OpenAI's Python SDK, ReportLab, Pillow and other
-third-party libraries. Each dependency retains its own license. The Python dependency
-license inventory still requires an independent review of the exact locked versions
-and any libraries or resources included in a redistributed image.
+third-party libraries. A CI metadata audit inspected **62 exactly pinned Python
+runtime packages** and verified installed versions. All 62 reported a license
+name or expression, including **one LGPLv3** classification and **two MPL-related**
+classifications, which need a targeted distribution/notice review. Build-time and
+runtime distributions may have different obligations. This is a package metadata
+inventory, not a legal conclusion or a substitute for the actual upstream license
+texts and distributed binary contents.
 
 ## Artwork, icons and marks
 
@@ -67,5 +71,6 @@ dependencies and assets may be distributed in source form, attach or retain
 required copyright notices where relevant, and confirm the hosted application's
 Privacy and Terms policies accurately describe its current behavior.
 
-**Status: initial inventory complete; unused starter/legacy assets removed from
-current tree. Python license and remaining image/mark provenance reviews pending.**
+**Status: JS and Python package metadata inventories complete; unused starter/legacy assets
+removed from the current tree. Copyleft-related notices and image/mark provenance
+reviews are pending.**

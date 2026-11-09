@@ -41,6 +41,9 @@ def main() -> int:
     print(f"Asset-reference audit: {len(corpus)} frontend text files")
     for name in LEGACY_ASSETS:
         references = [path for path, text in corpus if name in text]
+        retained = [str(path.relative_to(ROOT)) for path in FRONTEND.rglob(name) if path.is_file()]
+        if retained:
+            failures.append((name, retained))
         # A legacy path may appear in a README; count that as a reference
         # requiring manual inspection before removal.
         print(f"  Legacy {name}: {len(references)} source references")

@@ -48,6 +48,7 @@ def main() -> int:
     missing = []
     mismatched = []
     no_license = []
+    exceptional = []
     license_counts = Counter()
     entries = requirements()
     for name, pinned in entries:
@@ -60,12 +61,18 @@ def main() -> int:
             mismatched.append(name)
         declared = declared_license(dist)
         license_counts[declared] += 1
+        if "lgpl" in declared.lower() or "mpl" in declared.lower():
+            exceptional.append((name, declared))
         if declared == "Unspecified (manual review)":
             no_license.append(name)
 
     print(f"Python runtime dependency license metadata: {len(entries)} exact pins inspected")
     for license_name, count in sorted(license_counts.items()):
         print(f"  {license_name[:90]}: {count} package(s)")
+    if exceptional:
+        print("Copyleft or file-level license review (package and metadata only):")
+        for name, declared in exceptional:
+            print(f"  {name}: {declared}")
     if no_license:
         print("Missing/unclassified license metadata (owner review required):")
         for name in sorted(no_license):
