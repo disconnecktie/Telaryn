@@ -29,6 +29,10 @@ The less common licenses in the lockfile include:
 - **BlueOak-1.0.0:** `minimatch`
 - **MIT-0:** `@csstools/color-helpers`
 
+No installed npm package directories or compiled frontend bundles are tracked in this
+release-candidate Git tree. A future distributed frontend bundle or container image
+must separately preserve upstream notices and other obligations.
+
 The list above summarizes *declared package metadata*, not independently verified
 licenses of all package files and transitive subcomponents. Installation of dependencies
 via `npm ci` remains subject to each package's own terms. Review exact package

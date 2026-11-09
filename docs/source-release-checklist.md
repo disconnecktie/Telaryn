@@ -22,6 +22,7 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [x] **Unused image cleanup:** Automated reference audit found no frontend references to four legacy Atlas PNG icons, an inactive favicon, or the React/Vite starter SVGs. All seven are absent from the current release tree; they remain accessible in old Git commits.
 - [x] **Python license metadata inventory:** CI inspected 62 pinned runtime packages and verified installed versions; every package returned license metadata. One reported LGPLv3 and two reported MPL-related licenses. The manual upstream license and distribution review remains open.
 - [x] **Current PNG provenance:** On 9 November 2026 the owner confirmed personally generating all four current PNG assets (three Telaryn icons and `frontend/src/assets/hero.png`). Provenance attested by owner, not independently verified as exclusively copyrightable; generation-platform terms and potential third-party resemblance remain subject to review.
+- [x] **No vendored third-party packages in current source:** Current release tree contains no tracked `node_modules/`, installed Python packages, vendor bundles, compiled distributions or build output. Runtime dependencies are referenced by manifest/requirements; redistribution of built container images would require separate license-notice checks.
 - [ ] **Third-party rights sign-off:** Confirm exact upstream package notices, Python dependency licenses, applicable image-generation-platform reuse rights, social-brand marks and historical asset files, plus rights to include all materials in a source-available repository. The proprietary LICENSE does not override those rights.
 - [x] **Privacy text/implementation alignment:** Release-candidate Privacy Policy now distinguishes 90-day access-request expiry from actual cleanup triggers, clarifies 90/365-day closed-feedback purge rules and the absence of an in-app scheduler, and explains that screenshot image pixels are not redacted. Added frontend regression tests. Azure infrastructure code configures log retention for 30 days, but active deployment settings require verification.
 - [x] **Production scheduling in private source:** Reviewed the Atlas production Container Apps schedule definition: `0 4 * * *` (04:00 UTC daily) executes `python -m app.cli purge-retained-data`; source and production operations runbook agree on 90/365-day closed-feedback and 90-day access-request retention.
@@ -39,6 +40,38 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [x] **Historical administrator-email disclosure accepted:** The owner explicitly approved public visibility of the generic `admin@telaryn.app` address in older migration and test-fixture commits. This acceptance applies to that address only; other historical secrets, operational metadata, and personal data must still be reviewed. Current migration code remains environment-configured and opt-in.
 - [ ] **Final exact-head audit:** Re-run the checks after final edits and manually review all reachable refs and retained PR content, including other possible operational or personal disclosures.
 - [ ] **Owner sign-off:** Record the exact approved commit, test runs, scan summary, and legal review, then decide whether to publish.
+
+## Operator-only live verification (read-only until separately approved)
+
+These checks verify running systems, not just configuration in Git. Never paste
+credentials, connection strings, personal messages, customer content or sensitive
+Azure identifiers into a PR comment or public repository.
+
+- [ ] **Azure cleanup:** In the production Azure portal, open Container Apps → Jobs,
+  locate the scheduled retention/cleanup job, verify its cron schedule corresponds
+  to 04:00 UTC daily, then inspect the last several **Executions** for Succeeded.
+  Verify the deployed job executes the application retention command, uses the
+  intended production image/database, and has no recent missed/failed executions.
+  A documented Bicep schedule is not proof the job is deployed or healthy.
+  See the [Microsoft Azure scheduled jobs guide](https://learn.microsoft.com/en-us/azure/container-apps/jobs).
+- [ ] **Live retention:** Compare the actual deployed log retention, PostgreSQL
+  managed-backup period, and independent backup lifecycle against approved
+  runbook values (30 days of operational logs; 14 days for the two backup
+  channels). Review actual Azure configuration without exporting data.
+- [ ] **Inbound contact tests:** Confirm that support, privacy and security
+  contact identities each accept an external test email and that the appropriate
+  operator can respond. Azure Communication Services outbound sending
+  configuration and a domain's MX records alone do not establish inbound
+  alias/mailbox routing.
+- [ ] **Public content review:** Approve the user-visible About page, founder
+  biography/LinkedIn/GitHub links, devlog engineering timeline, policy
+  contacts, legal terms and updated Privacy revision effective date.
+- [ ] **Repository settings:** Verify branch protections/rulesets where available,
+  vulnerability reporting, security alerts, Actions permissions, and branch
+  visibility controls before any GitHub publication.
+
+These are manual verification gates. They have **not** been completed by
+source review or CI and must not be checked off solely from repository contents.
 
 ## Application-versus-website scope
 
