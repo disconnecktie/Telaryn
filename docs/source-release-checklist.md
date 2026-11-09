@@ -5,7 +5,7 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 ## Provenance and separation
 
 - Source baseline: `disconnecktie/Atlas`, Git ref `policy/proprietary-source-available` at `52d0511f6f05ea0485cb12e4bc42097f720135a7`. The source branch's licensing changes are draft and have not been merged into the original Atlas `main`.
-- This is a **new Git history**, containing only copied current file contents; it is not an Atlas Git mirror.
+- This repository began empty with its own Git history; only selected source snapshots were copied from Atlas. Its new commits remain in the same Telaryn repository and will be visible if the repository becomes public.
 - Included for review: `app/`, `frontend/` including original image assets, `alembic/`, selected `tests/`, local development build configuration, and the reviewed public-safe root documentation.
 - Excluded: all `infra/` staging/production files, private operational documentation, development audit exports, old workflow/Actions logs, Atlas historical commits and PRs, and direct cloud provisioning/recovery scripts.
 - Selected tests that depended on private deployment code or original documentation were not transferred: `test_production_foundation.py`, `test_staging_operations.py`, `test_staging_recovery.py`, `test_release_identity.py`, `test_ai_configuration.py`, `test_source_guideposts.py`, `test_branding_identity.py`, and `test_public_documentation.py`.
@@ -17,14 +17,14 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [ ] **Migration compatibility sign-off:** Confirm the public-only migration revision is appropriate for future clean installs and that it will never be used to update production without a separately reviewed deployment path.
 - [ ] **Content and identity review:** Review `frontend/src/pages/AboutJay.jsx`, `frontend/src/devlog/entries.js`, public policy copy, published contact details, and other user-visible content for intentional disclosure.
 - [ ] **Secret scan:** Run an up-to-date dedicated scanner (such as Gitleaks) across the **assembled candidate tree and its new history**, and manually inspect the findings. Rotate any real credentials found. Report only aggregate findings, never secret values.
-- [ ] **Commit metadata privacy (blocker):** GitHub commits already made in this private staging repository carry a personal author email. A new history is required; changing Git settings or force-pushing does not guarantee removal from PR refs or caches. Use [`docs/clean-history-publication-plan.md`](clean-history-publication-plan.md) and the offline `scripts/prepare_clean_release.py` tool to build a fresh root commit in a **separate** private release repository; retain this staging repository privately.
+- [x] **Commit metadata disclosure accepted:** The owner understands that public Git history exposes author and committer metadata, including the existing personal email address, and is comfortable with that exposure. **No additional repository or history rewrite is required solely for this reason.**
 - [ ] **Third-party rights:** Review package dependency notices, art/fonts, and any independently authored code. The proprietary LICENSE does not override third-party licenses.
 - [ ] **Legal/terms:** Owner approves `LICENSE`, privacy notice, and hosted-service Terms. Copyright protects original expression, not general software ideas.
 - [ ] **Backend:** Run the transferred pytest suite, syntax checks, and independent migration upgrade/smoke tests in a disposable database. Confirm that excluded environment-specific tests are either replaced or not applicable to the public snapshot.
 - [ ] **Frontend:** Run `npm ci`, `npm run lint`, `npm test`, `npm run build`; check responsive desktop/mobile and the original assets.
 - [ ] **Containers:** Validate `docker compose config`, local integration, and the intended development-only configuration. Do not expose the Compose example directly to the internet.
 - [ ] **Repository controls:** Configure branch protection/rulesets, least-privilege Actions permissions, dependency alerts, secret scanning as available, and GitHub private vulnerability reporting. Confirm the new repository contains no deployment secrets.
-- [ ] **Final Git audit:** Review exact `git ls-files`, tree SHA, branch refs, parent history and commit author metadata. Confirm the new public destination is not this staging repository, does not inherit its PR refs, and has only approved new root history. Do not import upstream Atlas references/history/remote accidentally.
+- [ ] **Final Git history audit:** Review the complete current repository history, all reachable branches/tags, previous edits and deleted files for secrets, private infrastructure references, and sensitive content. Author email metadata is intentionally permitted, but any other sensitive material still blocks publication. Atlas history must never be imported.
 - [ ] **Owner sign-off:** Record the exact approved commit, test runs, scan summary, and legal review, then decide whether to publish.
 
 ## Application-versus-website scope
