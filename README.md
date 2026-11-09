@@ -1,18 +1,18 @@
-# Telaryn — Source Preview
+# Telaryn — Private Source Release Candidate
 
 Telaryn is an AI-assisted work management platform built around one principle:
 
 **AI proposes. Humans approve. Telaryn records. Privacy protects every step.**
 
-This **documentation-only preview** does not contain application code,
-migrations, tests, or private operational material. A later, separately
-reviewed source release may include appropriate code, but will not include
-the project's private operator runbooks, Azure account inventory, deployment
-credentials, or prior private Git history.
+This **private review branch** contains a copied snapshot of application code,
+migrations, frontend assets, and selected tests for publication screening.
+It is **not yet cleared for public visibility or self-hosted production use**.
+Private operator runbooks, cloud infrastructure automation, deployment secrets,
+and prior Atlas Git history are deliberately excluded.
 
-**This is a review artifact, not permission to publish.** The project owner must
-approve the specific repository contents, confirm dependency and security
-checks, and validate the complete release before making this repository public. Telaryn is **proprietary and source-available, not open source**.
+**Do not make this repository public yet.** The owner must review this exact
+snapshot, resolve the release blockers, run CI and independent security scans,
+and ensure commit metadata does not expose private identities. Telaryn is **proprietary and source-available, not open source**.
 The included [LICENSE](LICENSE) permits viewing and platform-authorized GitHub
 forking, but does not grant broad source-code reuse rights.
 
@@ -73,9 +73,10 @@ npm test
 npm run build
 ```
 
-Any CI workflow shipped with a later public release must be validated against
-the actual snapshot contents. This preview intentionally omits the private
-deployment scripts that the full private CI may use.
+This branch uses a separate, restricted CI workflow that excludes private
+Atlas infrastructure jobs. See `docs/source-release-checklist.md` for the
+remaining publication gates, including Alembic migration review and independent
+credential scanning.
 
 ## Security and licensing
 
