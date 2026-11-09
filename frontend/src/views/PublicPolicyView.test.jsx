@@ -32,10 +32,18 @@ describe("Telaryn public Privacy", () => {
     const section = screen.getByRole("heading", { name: "Retention" }).closest("section");
     expect(within(section).getByText(/access requests expire after 90 days/i)).toBeInTheDocument();
     expect(within(section).getByText(/a new access request triggers cleanup/i)).toBeInTheDocument();
+    expect(within(section).getByText(/daily cleanup job/i)).toBeInTheDocument();
     expect(within(section).getByText(/screenshots are eligible for removal 90 days after closure/i)).toBeInTheDocument();
     expect(within(section).getByText(/365 days after closure/i)).toBeInTheDocument();
-    expect(within(section).getByText(/the administrative retention command performs this cleanup when run/i)).toBeInTheDocument();
+    expect(within(section).getByText(/schedules that maintenance command daily at 04:00 UTC/i)).toBeInTheDocument();
+    expect(within(section).getByText(/Actual deletion depends on that job being deployed/i)).toBeInTheDocument();
     expect(within(section).getByText(/feedback that remains open is not covered/i)).toBeInTheDocument();
+  });
+
+  test("identifies the 2026-11-09 revised notice and public privacy contact", () => {
+    render(<PublicPolicyView policy="privacy" onSignIn={vi.fn()} />);
+    expect(screen.getByText(/this revised notice is dated November 9, 2026/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "privacy@telaryn.app" })).toHaveAttribute("href", "mailto:privacy@telaryn.app");
   });
 
   test("does not promise that screenshot pixels are redacted", () => {

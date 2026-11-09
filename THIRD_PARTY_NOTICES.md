@@ -42,7 +42,12 @@ Alembic, Azure SDK components, OpenAI's Python SDK, ReportLab, Pillow and other
 third-party libraries. A CI metadata audit inspected **62 exactly pinned Python
 runtime packages** and verified installed versions. All 62 reported a license
 name or expression, including **one LGPLv3** classification and **two MPL-related**
-classifications, which need a targeted distribution/notice review. Build-time and
+classifications:
+- `psycopg[binary]==3.2.10`: LGPLv3 per installed metadata; [upstream license](https://github.com/psycopg/psycopg/blob/master/LICENSE.txt).
+- `certifi==2026.7.22`: MPL-2.0 per installed metadata; [upstream license](https://github.com/certifi/python-certifi/blob/master/LICENSE).
+- `tqdm==4.70.0`: MPL-2.0 AND MIT per installed metadata; [upstream license and attribution](https://tqdm.github.io/licence/).
+
+These declarations require a targeted distribution/notice review. Build-time and
 runtime distributions may have different obligations. This is a package metadata
 inventory, not a legal conclusion or a substitute for the actual upstream license
 texts and distributed binary contents.

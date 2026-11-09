@@ -12,7 +12,7 @@ and prior Atlas Git history are deliberately excluded.
 
 **Do not make this repository public yet.** The owner must review this exact
 snapshot, resolve the release blockers, run CI and independent security scans,
-and ensure commit metadata does not expose private identities. Telaryn is **proprietary and source-available, not open source**.
+and approve the exact history and current source. Telaryn is **proprietary and source-available, not open source**.
 The included [LICENSE](LICENSE) permits viewing and platform-authorized GitHub
 forking, but does not grant broad source-code reuse rights.
 
