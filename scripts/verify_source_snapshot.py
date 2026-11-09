@@ -29,7 +29,7 @@ SOURCE_PREFIXES = ("app/", "frontend/", "alembic/", "tests/")
 
 SENSITIVE_PATTERNS = {
     "private-personal-email": re.compile(
-        r"[\\w.+-]+@(?:gmail|yahoo|outlook|icloud)\\.com", re.IGNORECASE
+        r"[\w.+-]+@(?:gmail|yahoo|outlook|icloud)\.com", re.IGNORECASE
     ),
     "known-environment-resource": re.compile(
         r"(?:kvatlasproductionjay|rg-atlas-production)", re.IGNORECASE
@@ -50,7 +50,7 @@ def tracked_files() -> list[str]:
     result = subprocess.run(
         ["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, check=True
     )
-    return sorted(x.decode("utf-8") for x in result.stdout.split(b"\\0") if x)
+    return sorted(x.decode("utf-8") for x in result.stdout.split(b"\0") if x)
 
 
 def acceptable_path(path: str) -> bool:
@@ -92,7 +92,7 @@ def history_has_personal_email() -> bool:
         cwd=ROOT, capture_output=True, text=True, check=True,
     )
     return any(
-        re.search(r"@(?:gmail|yahoo|outlook|icloud)\\.com\\b", line, re.IGNORECASE)
+        re.search(r"@(?:gmail|yahoo|outlook|icloud)\.com\b", line, re.IGNORECASE)
         for line in result.stdout.splitlines()
     )
 
