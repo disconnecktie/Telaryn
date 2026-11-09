@@ -22,9 +22,8 @@ ALLOWED_DOCS = {
     "docs/deployment-architecture.md",
     "docs/operations-overview.md",
     "docs/source-release-checklist.md",
-    "docs/clean-history-publication-plan.md",
 }
-ALLOWED_SCRIPTS = {"scripts/verify_source_snapshot.py", "scripts/prepare_clean_release.py"}
+ALLOWED_SCRIPTS = {"scripts/verify_source_snapshot.py"}
 ALLOWED_WORKFLOWS = {".github/workflows/ci.yml", ".github/workflows/private-history-secret-audit.yml"}
 SOURCE_PREFIXES = ("app/", "frontend/", "alembic/", "tests/")
 
