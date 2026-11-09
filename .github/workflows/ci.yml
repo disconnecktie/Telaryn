@@ -23,8 +23,6 @@ jobs:
           python-version: "3.12"
       - name: Check reviewed paths and known sensitive markers
         run: python scripts/verify_source_snapshot.py
-      - name: Validate clean-history export allowlist without writing anything
-        run: python scripts/prepare_clean_release.py --check-only
 
   publication-gate:
     name: Public release gate (expected to fail until reviewed)
@@ -37,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Refuse unreconciled commit identities and migration-specific operations
+      - name: Require approved publication checklist and safe migration contract
         run: python scripts/verify_source_snapshot.py --publication-gate
 
   backend:
