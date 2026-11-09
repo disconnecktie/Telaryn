@@ -1,0 +1,843 @@
+/* Shared application shell, theme, and cross-cutting visual primitives. */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #f5f6f8;
+  color: #17191c;
+}
+
+button {
+  font: inherit;
+}
+
+/* Preserve authored paragraphs while React continues to escape plain text. */
+.preserve-line-breaks {
+  white-space: pre-wrap;
+}
+
+.app-shell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.sidebar {
+  background: #111317;
+  color: white;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-navigation {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #3a414c transparent;
+}
+
+.sidebar-navigation::-webkit-scrollbar { width: 6px; }
+.sidebar-navigation::-webkit-scrollbar-thumb { border-radius: 999px; background: #3a414c; }
+.sidebar-navigation > nav,
+.sidebar-navigation > .new-ticket-button { flex: 0 0 auto; }
+.session-summary { flex: 0 0 auto; }
+
+.atlas-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.atlas-brand__mark {
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.22));
+}
+
+.atlas-brand__wordmark {
+  color: currentColor;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.sidebar-brand {
+  color: #f6f8fb;
+}
+
+.sidebar-brand .atlas-brand__wordmark {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #a9adb5;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: #1d2026;
+  color: white;
+}
+
+.my-work-subnav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: -2px 0 4px 18px;
+  padding-left: 10px;
+  border-left: 1px solid #323740;
+}
+
+.my-work-subnav button {
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 8px;
+  background: transparent;
+  color: #8f96a1;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.my-work-subnav button:hover,
+.my-work-subnav button.active {
+  background: #1d2026;
+  color: #fff;
+}
+
+.my-work-subnav button.active {
+  box-shadow: inset 2px 0 0 #6f9bd0;
+}
+
+.main-content {
+  padding: 40px 48px;
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.administration-view {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+}
+
+.administration-view > .secondary-button {
+  justify-self: start;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  margin: 4px 0 0;
+  font-size: 34px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #7a7f87;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.workspace-pill {
+  background: white;
+  border: 1px solid #dfe2e7;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  margin: 4px 0 0;
+}
+
+.section-header span {
+  color: #7a7f87;
+  font-size: 14px;
+}
+
+.status-divider {
+  color: #c2c6cc;
+  font-size: 11px;
+}
+
+.priority {
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.priority {
+  font-weight: 800;
+}
+
+.priority.high,
+.priority.critical {
+  color: #9a2f2f;
+}
+
+.priority.medium {
+  color: #865d11;
+}
+
+.priority.low {
+  color: #41704c;
+}
+
+.status-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: system-ui, sans-serif;
+}
+
+.error {
+  color: #a52d2d;
+}
+
+@keyframes ticket-drawer-content-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ticket-drawer-loading-pulse {
+  from { background-position: 100% 0; }
+  to { background-position: -120% 0; }
+}
+
+.close-button {
+  border: 0;
+  background: transparent;
+  color: #737881;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.close-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.header-edit-button {
+  border: 1px solid #cdd2d9;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: white;
+  color: #343a42;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.header-edit-button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.status-note-field small {
+  color: #8a5a28;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.muted {
+  color: #8a8f96;
+  font-size: 14px;
+}
+
+.secondary-button,
+.ai-button {
+  flex: 1;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondary-button {
+  background: white;
+  border: 1px solid #d6d9de;
+  color: #363a40;
+}
+
+.ai-button {
+  border: 0;
+  background: #17191c;
+  color: white;
+}
+
+.ai-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-ticket-panel {
+  margin-top: 24px;
+  padding: 20px;
+  background: #f8f9fb;
+  border: 1px solid #e1e4e8;
+  border-radius: 14px;
+}
+
+.edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.edit-field span {
+  color: #777c84;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.edit-field input,
+.edit-field textarea,
+.edit-field select {
+  width: 100%;
+  border: 1px solid #d4d8dd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  background: white;
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 19, 23, 0.38);
+  z-index: 200;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.modal-header h2 {
+  margin: 5px 0 0;
+  font-size: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.modal-actions button {
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+.sidebar-spacer {
+  flex: 1;
+}
+
+.theme-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid #dfe2e7;
+  border-radius: 14px;
+  background: white;
+  color: #25282d;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-option.selected {
+  border-color: #24282f;
+  box-shadow: 0 0 0 2px rgba(36, 40, 47, 0.1);
+}
+
+.theme-option > span:not(.theme-preview) {
+  color: #747981;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.theme-option em {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+html[data-theme="light"] body {
+  background: #e9edf2;
+  color: #1d232b;
+}
+
+html[data-theme="light"] .sidebar {
+  border-right: 1px solid #c9d0d9;
+  background: #f3f5f8;
+  color: #181b20;
+}
+
+html[data-theme="light"] .sidebar-brand { color: #172536; }
+
+html[data-theme="light"] .nav-item {
+  color: #4e5763;
+}
+
+html[data-theme="light"] .nav-item:hover,
+html[data-theme="light"] .nav-item.active {
+  background: #dce2e9;
+  color: #11151a;
+}
+
+html[data-theme="light"] .secondary-nav { border-color: #d4dae2; }
+html[data-theme="light"] .session-summary { border-color: #d3d9e1; background: #e9edf2; color: #59626e; }
+html[data-theme="light"] .session-summary strong { color: #20252b; }
+html[data-theme="light"] .session-summary button { border-color: #d3d9e1; color: #59626e; }
+html[data-theme="light"] .session-summary button:hover { color: #11151a; }
+
+html[data-theme="light"] .workspace-pill,
+html[data-theme="light"] .secondary-button,
+html[data-theme="light"] .header-edit-button,
+html[data-theme="light"] .edit-field input,
+html[data-theme="light"] .edit-field textarea,
+html[data-theme="light"] .edit-field select {
+  border-color: #c5ccd5;
+}
+
+html[data-theme="light"] .muted {
+  color: #5f6874;
+}
+
+html[data-theme="kruszynko"] body {
+  background: #fff7fa;
+  color: #39212d;
+}
+
+html[data-theme="kruszynko"] .sidebar {
+  background: #5b2440;
+}
+
+html[data-theme="kruszynko"] .nav-item {
+  color: #e6b9ce;
+}
+
+html[data-theme="kruszynko"] .nav-item:hover,
+html[data-theme="kruszynko"] .nav-item.active {
+  background: #7a3154;
+  color: white;
+}
+
+html[data-theme="kruszynko"] .ai-button {
+  background: #8b3e65;
+  color: white;
+}
+
+html[data-theme="kruszynko"] .secondary-nav { border-color: #74304f; }
+html[data-theme="kruszynko"] .session-summary { border-color: #7b3656; background: #4d1e35; }
+html[data-theme="kruszynko"] .session-avatar { background: #bd5d8b; }
+html[data-theme="kruszynko"] .session-summary button { border-color: #7b3656; color: #e6b9ce; }
+
+html[data-theme="kruszynko"] .header-edit-button {
+  border-color: #d59ab6;
+  background: #fff1f6;
+  color: #71304f;
+}
+
+html[data-theme="kruszynko"] .eyebrow {
+  color: #9a5274;
+}
+
+@media (max-width: 800px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    padding: 24px;
+  }
+
+}
+
+@media (max-width: 700px) {
+  .section-header {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .edit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Authentication stays visually focused and separate from the work-management shell. */
+
+.secondary-nav { gap: 3px; padding-top: 10px; border-top: 1px solid #292d34; }
+.session-summary { display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 8px 10px; padding: 11px; border: 1px solid #2d323a; border-radius: 11px; background: #181b20; color: #aeb4bd; font-size: 11px; }
+.session-avatar { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 9px; background: #2b5fab; color: white; font-size: 13px; font-weight: 800; }
+.session-identity { min-width: 0; display: grid; gap: 2px; }
+.session-summary strong,
+.session-summary span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.session-summary strong { color: #f0f2f5; font-size: 12px; }
+.session-summary button { grid-column: 1 / -1; border: 0; border-top: 1px solid #2d323a; padding: 8px 0 0; background: transparent; color: #9299a3; text-align: left; font-size: 11px; cursor: pointer; }
+.session-summary button:hover { color: white; }
+
+.text-button {
+  border: 0;
+  padding: 7px 4px;
+  background: transparent;
+  color: #596675;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  color: #17191c;
+  text-decoration: underline;
+}
+
+/* Phones are an execution surface, led by My Work rather than the desktop dashboard. */
+.mobile-execution-nav {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .app-shell {
+    position: relative;
+  }
+
+  .main-content {
+    padding: 24px 18px calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-execution-nav {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid #2d3745;
+    background: rgba(14, 19, 27, 0.96);
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobile-execution-nav > button,
+.mobile-more > summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 42px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #b6c1ce;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+  }
+
+  .mobile-execution-nav > button.active,
+.mobile-more > summary.active {
+    border-color: transparent;
+    background: transparent;
+    color: #9bc5ff;
+  }
+
+  .mobile-execution-nav > .mobile-new-ticket {
+    border-color: transparent;
+    background: transparent;
+    color: #dbeaff;
+  }
+
+  .mobile-nav-icon { font-size: 17px; line-height: 1; }
+  .mobile-new-ticket-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-top: -22px; border-radius: 14px; background: #2b6fbf; box-shadow: 0 7px 16px rgba(0, 0, 0, .28); color: #fff; font-size: 27px; line-height: 1; }
+}
+
+@media (max-width: 800px) {
+  .mobile-execution-nav { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .mobile-more > summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 44px;
+    border-radius: 9px;
+    color: #d2deec;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+    list-style: none;
+  }
+  .mobile-more > summary::-webkit-details-marker { display: none; }
+  .mobile-more[open] > summary { background: #243c58; }
+  .mobile-more-menu {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 12px;
+    display: grid;
+    gap: 4px;
+    width: min(260px, calc(100vw - 24px));
+    padding: 12px;
+    border: 1px solid #55799f;
+    border-radius: 12px;
+    background: #131e2d;
+    box-shadow: 0 6px 24px #0005;
+  }
+  .mobile-more-identity { display: grid; gap: 2px; padding: 8px; color: #fff; overflow-wrap: anywhere; font-weight: 800; }
+  .mobile-more-identity small { color: #aebfd2; font-size: 11px; font-weight: 600; }
+  .mobile-execution-nav .mobile-more-menu > button {
+    min-height: 44px;
+    display: block;
+    text-align: left;
+    background: transparent;
+    color: #e0e9f5;
+    border-color: transparent;
+  }
+  .mobile-execution-nav .mobile-more-menu > button.active { background: #243c58; color: #fff; }
+  .mobile-more-menu > button:focus-visible,
+.mobile-more > summary:focus-visible { outline: 2px solid #9ac7ff; outline-offset: 2px; }
+}
+
+/* Mobile shell reserves real space for navigation and follows browser chrome height. */
+@media (max-width: 800px) {
+  html,
+body,
+#root {
+    min-height: 100%;
+    overscroll-behavior-y: none;
+  }
+  html[data-theme="light"],
+html[data-theme="light"] body,
+html[data-theme="light"] #root {
+    background: #ffffff;
+  }
+  html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root {
+    background: #192434;
+  }
+  html[data-theme="kruszynko"],
+html[data-theme="kruszynko"] body,
+html[data-theme="kruszynko"] #root {
+    background: #fff7fb;
+  }
+  html[data-theme] .app-shell {
+    --mobile-bg: #eef2f6;
+    --mobile-surface: #ffffff;
+    --mobile-inset: #e5edf6;
+    --mobile-text: #182637;
+    --mobile-muted: #526477;
+    --mobile-border: #c7d3e0;
+    --mobile-accent: #235b9b;
+    --mobile-on-accent: #ffffff;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    height: 100vh;
+    height: var(--atlas-mobile-viewport-height, 100dvh);
+    min-height: 0;
+    padding-top: env(safe-area-inset-top);
+    background: var(--mobile-bg);
+    color: var(--mobile-text);
+  }
+  html[data-theme="dark"] .app-shell {
+    --mobile-bg: #0e1520;
+    --mobile-surface: #192434;
+    --mobile-inset: #223349;
+    --mobile-text: #edf3fc;
+    --mobile-muted: #b4c4d8;
+    --mobile-border: #40556f;
+    --mobile-accent: #9bc5ff;
+    --mobile-on-accent: #10243e;
+  }
+  html[data-theme="kruszynko"] .app-shell {
+    --mobile-bg: #f8e7ef;
+    --mobile-surface: #fff7fb;
+    --mobile-inset: #f1d5e3;
+    --mobile-text: #50233b;
+    --mobile-muted: #79475f;
+    --mobile-border: #d9a9bf;
+    --mobile-accent: #96496e;
+    --mobile-on-accent: #ffffff;
+  }
+  html[data-theme] .app-shell > .main-content {
+    grid-row: 1;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    padding-bottom: 24px;
+    overscroll-behavior-y: contain;
+    background: var(--mobile-bg);
+    color: var(--mobile-text);
+  }
+  html[data-theme] .mobile-execution-nav {
+    position: relative;
+    grid-row: 2;
+    inset: auto;
+    padding: 6px 10px max(4px, min(env(safe-area-inset-bottom), 12px));
+    background: var(--mobile-surface);
+    border-color: var(--mobile-border);
+    box-shadow: none;
+  }
+
+  html[data-theme] .mobile-execution-nav > button,
+html[data-theme] .mobile-more > summary {
+    min-height: 46px;
+  }
+
+  html[data-theme] .mobile-new-ticket-icon {
+    width: 38px;
+    height: 38px;
+    margin-top: -16px;
+    border-radius: 13px;
+    font-size: 25px;
+  }
+
+  html[data-theme] .mobile-execution-nav > button.active,
+html[data-theme] .mobile-more > summary.active {
+    background: transparent;
+    color: var(--mobile-accent);
+    border-color: transparent;
+  }
+  html[data-theme] .mobile-execution-nav > .mobile-new-ticket {
+    background: transparent;
+    color: var(--mobile-text);
+    border-color: transparent;
+  }
+  html[data-theme] .mobile-new-ticket-icon {
+    background: var(--mobile-accent);
+    color: var(--mobile-on-accent);
+  }
+  html[data-theme] .mobile-execution-nav > button,
+html[data-theme] .mobile-more > summary,
+html[data-theme] .mobile-more-menu > span,
+html[data-theme] .mobile-execution-nav .mobile-more-menu > button {
+    color: var(--mobile-text);
+  }
+  html[data-theme] .mobile-more[open] > summary { background: var(--mobile-inset); }
+  html[data-theme] .mobile-execution-nav .mobile-more-menu > button.active {
+    background: var(--mobile-inset);
+    color: var(--mobile-accent);
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  html[data-theme] .mobile-execution-nav > button,
+html[data-theme] .mobile-more > summary {
+    border-color: transparent;
+  }
+}
+
+/* Connect project component tokens to the mobile palette as a complete color pair. */
+@media (max-width: 800px) {
+  html[data-theme] .app-shell {
+    --surface-color: var(--mobile-surface);
+    --border-color: var(--mobile-border);
+    --muted-color: var(--mobile-muted);
+  }
+
+}
+
+/* Keep iOS from magnifying focused form controls; preserve user pinch zoom. */
+@media (max-width: 800px) {
+  html[data-theme] .app-shell :is(input, textarea, select) {
+    font-size: 16px;
+  }
+}
