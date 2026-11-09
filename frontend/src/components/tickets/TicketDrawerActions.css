@@ -1,0 +1,153 @@
+/* Top-level drawer actions and Telaryn AI review trigger alignment. */
+.atlas-ai-review-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.atlas-ai-review-icon {
+  line-height: 1;
+}
+
+.drawer-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  padding-top: 28px;
+}
+
+.drawer-actions > .atlas-ai-review-button,
+.drawer-actions > .atlas-review-progress {
+  grid-column: 1 / -1;
+}
+
+.drawer-actions > :only-child {
+  grid-column: 1 / -1;
+}
+
+.drawer-actions > button,
+.drawer-actions > .ticket-export-control,
+.drawer-actions > .atlas-review-progress {
+  width: 100%;
+  min-width: 0;
+}
+
+.drawer-actions > button {
+  min-height: 44px;
+  margin: 0;
+}
+
+.drawer-actions .atlas-review-cancel-button {
+  min-width: 0;
+}
+
+
+.ticket-export-control {
+  position: relative;
+}
+
+.ticket-export-menu {
+  width: 100%;
+}
+
+.ticket-export-menu > summary {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cdd2d9;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: white;
+  color: #343a42;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ticket-export-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.ticket-export-menu > summary::after {
+  content: " ▾";
+}
+
+.ticket-export-menu[open] > summary::after {
+  content: " ▴";
+}
+
+.ticket-export-menu [role="menu"] {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 0;
+  z-index: 5;
+  display: grid;
+  width: min(300px, calc(100vw - 56px));
+  padding: 6px;
+  border: 1px solid #ccd4de;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(19, 31, 47, 0.18);
+}
+
+.drawer-actions .ticket-export-menu [role="menu"] button {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  border: 0;
+  border-radius: 7px;
+  padding: 10px 11px;
+  background: transparent;
+  color: #242a31;
+  text-align: left;
+  cursor: pointer;
+}
+
+.drawer-actions .ticket-export-menu [role="menu"] button:hover:not(:disabled) {
+  background: #eef3f9;
+}
+
+.ticket-export-menu [role="menu"] span {
+  color: #687486;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.ticket-export-error {
+  max-width: 300px;
+  margin: 7px 0 0;
+  color: #9a2f2f;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+@media (max-width: 800px) {
+  .ticket-export-menu > summary {
+    padding: 11px 13px;
+    background: var(--mobile-surface, white);
+    color: var(--mobile-text, #242a31);
+    border-color: var(--mobile-border, #cdd2d9);
+  }
+
+  .ticket-export-menu [role="menu"] {
+    background: var(--mobile-surface, white);
+    border-color: var(--mobile-border, #ccd4de);
+  }
+
+  .drawer-actions .ticket-export-menu [role="menu"] button {
+    color: var(--mobile-text, #242a31);
+  }
+
+  .ticket-export-menu [role="menu"] span {
+    color: var(--mobile-muted, #687486);
+  }
+}
+
