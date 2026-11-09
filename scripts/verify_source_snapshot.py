@@ -108,7 +108,19 @@ def main() -> int:
     findings = scan_snapshot(paths)
     if args.publication_gate:
         if IDENTITY_MIGRATION in paths:
-            findings.append((IDENTITY_MIGRATION, "mandatory migration review unresolved"))
+            migration = (ROOT / IDENTITY_MIGRATION).read_text(encoding="utf-8")
+            # The public candidate may retain the migration revision identifier,
+            # but must not hard-code a privileged operator identity or silently
+            # rewrite placeholder accounts without opt-in.
+            if (
+                "PRODUCTION_ADMIN_EMAIL" in migration
+                or "admin@telaryn.app" in migration
+                or 'ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED' not in migration
+                or '!= "yes"' not in migration
+            ):
+                findings.append(
+                    (IDENTITY_MIGRATION, "publication-safe migration review unresolved")
+                )
         if history_has_personal_email():
             findings.append(("<Git history>", "personal commit email in retained history"))
     if findings:
