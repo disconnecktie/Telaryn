@@ -1,0 +1,78 @@
+/* Keeps the external-provider warning readable above every Telaryn workflow surface. */
+.ai-transmission-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(6, 9, 14, 0.68);
+  backdrop-filter: blur(3px);
+}
+
+.ai-transmission-dialog {
+  position: fixed;
+  z-index: 1201;
+  top: 50%;
+  left: 50%;
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  padding: 28px;
+  border: 1px solid var(--border-color, #d2d8e2);
+  border-radius: 16px;
+  background: var(--surface, #ffffff);
+  color: var(--text-primary, #17191c);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.ai-transmission-dialog h2 {
+  margin: 4px 0 12px;
+}
+
+.ai-transmission-dialog > p {
+  line-height: 1.55;
+}
+
+.ai-transmission-warning {
+  margin: 20px 0;
+  padding: 16px 18px;
+  border: 1px solid #d7a33d;
+  border-radius: 12px;
+  background: rgba(215, 163, 61, 0.12);
+}
+
+.ai-transmission-warning ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.ai-transmission-warning li + li {
+  margin-top: 6px;
+}
+
+.ai-transmission-private-note {
+  font-size: 0.875rem;
+  color: var(--text-muted, #606978);
+}
+
+.ai-transmission-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+  .ai-transmission-dialog {
+    width: calc(100vw - 24px);
+    padding: 22px 18px;
+  }
+
+  .ai-transmission-actions {
+    flex-direction: column-reverse;
+  }
+
+  .ai-transmission-actions button {
+    width: 100%;
+  }
+}
+
