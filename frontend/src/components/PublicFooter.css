@@ -1,0 +1,34 @@
+/* Keep public ownership and policy navigation useful without overpowering the product story. */
+.public-footer {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.3fr) minmax(300px, 0.7fr);
+  gap: 26px clamp(42px, 8vw, 96px);
+  width: min(1050px, 100%);
+  margin: 38px auto 0;
+  padding: 24px 0 8px;
+  border-top: 1px solid #34465b;
+  color: #aebdcd;
+  font-size: 13px;
+}
+
+.public-footer__brand { display: grid; justify-items: start; gap: 15px; }
+.public-footer__wordmark { color: #f7f9fb; }
+.public-footer__brand > p { max-width: 430px; margin: 0; color: #98a9bb; line-height: 1.6; }
+.public-footer__brand .release-badge { color: #c7d5e4; }
+.public-footer__links { display: grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 28px; }
+.public-footer nav { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.public-footer nav strong { margin-bottom: 3px; color: #7f93a8; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+.public-footer a { color: #d6e2ee; text-decoration: none; }
+.public-footer a:hover { color: #ffffff; text-decoration: underline; text-underline-offset: 4px; }
+.public-footer__copyright { grid-column: 1 / -1; margin: 0; padding-top: 15px; border-top: 1px solid #28394b; color: #788b9f; font-size: 11px; }
+
+@media (max-width: 760px) {
+  .public-footer { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; padding-top: 22px; }
+  .public-footer__brand > p { max-width: 34ch; }
+  .public-footer__links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .public-footer__copyright { grid-column: 1; }
+}
+
+@media (max-width: 390px) {
+  .public-footer__links { grid-template-columns: 1fr; }
+}

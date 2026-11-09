@@ -1,0 +1,61 @@
+/* Isolated intake styles keep forms readable and contained at phone widths. */
+.access-dialog, .access-review { color: #182637; background: #fff; border: 1px solid #c7d3e0; border-radius: 14px; padding: 20px; overflow-wrap: anywhere; }
+.access-dialog { width: min(620px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); box-sizing: border-box; overflow-y: auto; }
+.access-dialog::backdrop { background: #071327b3; }
+.access-dialog label, .access-review label { display: grid; gap: 6px; margin: 12px 0; }
+.access-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.access-dialog :is(input, select, textarea), .access-review select { box-sizing: border-box; width: 100%; min-width: 0; font-size: 16px; padding: 10px; color: inherit; background: inherit; border: 1px solid #8091a7; border-radius: 6px; }
+.access-dialog button, .access-review button { min-height: 44px; white-space: normal; max-width: 100%; padding: 10px 14px; margin: 8px 8px 0 0; border: 1px solid #8091a7; border-radius: 6px; color: inherit; background: inherit; cursor: pointer; }
+.access-dialog button[type="submit"] { background: #235b9b; color: #fff; }
+.access-dialog :focus-visible, .access-review :focus-visible { outline: 3px solid #549bef; outline-offset: 2px; }
+.access-review { margin: 20px 0; }
+.access-queue-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 18px 0; }
+.access-queue-filters label { flex: 1 1 180px; margin: 0; min-width: 0; }
+.access-review .access-queue-filters input { box-sizing: border-box; width: 100%; min-width: 0; padding: 10px; font-size: 16px; background: transparent; color: inherit; border: 1px solid #8091a7; border-radius: 6px; }
+.access-review .access-queue-filters button { margin: 0; }
+.access-queue-list { list-style: none; padding: 0; }
+.access-queue-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(120px, auto) auto; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #8091a7; }
+.access-queue-list li > div { display: grid; gap: 4px; min-width: 0; }
+.access-queue-list time, .access-queue-list li > div > span { font-size: 13px; }
+.access-queue-list button { margin: 0; }
+.access-detail { max-width: 920px; }
+.access-detail > h3 { margin-bottom: 12px; }
+.access-detail > dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; margin: 14px 0; }
+.access-detail > dl > div { min-width: 0; padding: 10px 0; border-bottom: 1px solid #8091a766; }
+.access-detail > dl > .access-detail-wide { grid-column: 1 / -1; }
+.access-detail > dl dd { margin-bottom: 0; }
+.request-status-editor { display: grid; grid-template-columns: minmax(180px, 280px) auto minmax(0, 1fr); gap: 10px; align-items: end; margin: 14px 0; }
+.request-status-editor label, .request-status-editor button { margin: 0; }
+.request-status-editor span { align-self: center; }
+@media (max-width: 600px) {
+  .access-queue-list li { grid-template-columns: minmax(0, 1fr) auto; }
+  .access-queue-list time { grid-column: 1; }
+  .access-detail > dl { grid-template-columns: minmax(0, 1fr); }
+  .access-detail > dl > .access-detail-wide { grid-column: auto; }
+  .request-status-editor { grid-template-columns: minmax(0, 1fr) auto; }
+  .request-status-editor span { grid-column: 1 / -1; }
+}
+.access-review dd { margin: 4px 0 14px; white-space: pre-wrap; }
+.access-review dt { font-weight: 700; text-transform: capitalize; }
+.public-about-page .public-about-hero .public-primary-action.public-request-access { margin-left: 12px; background: #e8f1fb; color: #182637; border-color: #e8f1fb; }
+.public-about-page .public-about-hero .public-primary-action.public-request-access:hover { background: #fff; color: #182637; border-color: #fff; }
+.access-dialog select, .access-dialog select option, .access-review select, .access-review select option { color: #182637; background: #fff; color-scheme: light; }
+.intake-count { display: inline-block; margin-left: 6px; padding: 2px 7px; border: 1px solid currentColor; border-radius: 999px; font-size: 12px; line-height: 1.4; }
+html[data-theme="dark"] :is(.access-dialog, .access-review) { background: #192434; color: #edf3fc; border-color: #40556f; }
+html[data-theme="kruszynko"] :is(.access-dialog, .access-review) { background: #fff7fb; color: #50233b; border-color: #d9a9bf; }
+@media (max-width: 480px) { .access-fields { grid-template-columns: minmax(0, 1fr); gap: 0; } .public-about-page .public-about-hero .public-primary-action.public-request-access { margin-left: 0; } }
+.invitation-admin { margin: 22px 0; padding: 16px; border: 1px solid #8091a7; border-radius: 10px; }
+.invitation-admin h4 { margin-top: 0; }
+.invitation-actions, .invitation-confirmation { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.invitation-confirmation p { flex-basis: 100%; margin: 4px 0; }
+.activation-link { margin-top: 12px; padding: 12px; border-radius: 8px; background: #e8f1fb; color: #182637; }
+.activation-link input { box-sizing: border-box; width: 100%; padding: 10px; font: inherit; }
+.invitation-page { min-height: 100dvh; display: grid; place-items: center; box-sizing: border-box; padding: 24px; background: #071327; }
+.invitation-card { width: min(520px, 100%); box-sizing: border-box; padding: 32px; border-radius: 16px; background: #fff; color: #182637; box-shadow: 0 22px 70px #0006; }
+.invitation-card h1 { margin: 12px 0; font-size: clamp(28px, 6vw, 42px); }
+.invitation-card form, .invitation-card label { display: grid; gap: 8px; }
+.invitation-card form { gap: 14px; }
+.invitation-card input { box-sizing: border-box; width: 100%; padding: 12px; border: 1px solid #8091a7; border-radius: 7px; font-size: 16px; }
+.invitation-card button { min-height: 44px; padding: 10px 14px; border: 1px solid #315f92; border-radius: 7px; background: #235b9b; color: white; font-weight: 700; }
+.invitation-account { display: grid; gap: 4px; padding: 12px; border: 1px solid #c7d3e0; border-radius: 8px; background: #f5f8fc; }
+@media (max-width: 480px) { .invitation-page { padding: 12px; } .invitation-card { padding: 22px; } }
