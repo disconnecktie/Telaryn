@@ -1,0 +1,5 @@
+/* Global browser reset and root typography shared by every Telaryn view. */
+html {
+  background: #f5f6f8;
+}
+
