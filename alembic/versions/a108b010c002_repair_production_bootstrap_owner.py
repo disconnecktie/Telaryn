@@ -1,4 +1,4 @@
-"""repair the fresh production bootstrap owner
+"""repair an explicitly approved fresh production bootstrap owner
 
 Revision ID: a108b010c002
 Revises: a107b010c001
@@ -19,7 +19,7 @@ depends_on = None
 
 
 PLACEHOLDER_EMAIL = "atlas.local@example.com"
-PRODUCTION_ADMIN_EMAIL = "admin@telaryn.app"
+REPAIR_APPROVAL_ENV = "ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED"
 
 
 def upgrade() -> None:
@@ -28,10 +28,10 @@ def upgrade() -> None:
         return
 
     expected_email = os.getenv("ATLAS_BOOTSTRAP_USER_EMAIL", "").strip().lower()
-    if expected_email != PRODUCTION_ADMIN_EMAIL:
+    if not expected_email or expected_email == PLACEHOLDER_EMAIL or "@" not in expected_email:
         raise RuntimeError(
-            "Refusing to repair the production bootstrap owner without the expected "
-            "ATLAS_BOOTSTRAP_USER_EMAIL."
+            "Refusing production bootstrap repair without an explicit, "
+            "non-placeholder ATLAS_BOOTSTRAP_USER_EMAIL."
         )
 
     connection = op.get_bind()
@@ -48,6 +48,15 @@ def upgrade() -> None:
     ):
         raise RuntimeError(
             "Refusing to repair an unexpected production identity state."
+        )
+
+    # The public source snapshot must not assume any particular deployment's
+    # privileged address. An operator must explicitly authorize this one-time
+    # repair before Alembic updates a placeholder user's identity.
+    if os.getenv(REPAIR_APPROVAL_ENV, "").strip() != "yes":
+        raise RuntimeError(
+            "Refusing placeholder owner repair without explicit "
+            "ATLAS_BOOTSTRAP_OWNER_REPAIR_APPROVED=yes."
         )
 
     user_id = users[0]["id"]
