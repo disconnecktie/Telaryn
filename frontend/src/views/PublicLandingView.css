@@ -1,0 +1,707 @@
+/* Owns the unauthenticated Telaryn product story. */
+.public-landing {
+  min-height: 100vh;
+  padding: 28px clamp(20px, 5vw, 88px) 56px;
+  background: linear-gradient(145deg, #eef2f7 0%, #f8f9fb 48%, #e8edf4 100%);
+  color: #101d31;
+}
+
+.public-nav,
+.public-hero,
+.public-workflow,
+.public-current-build,
+.public-status,
+.public-login-panel {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+}
+
+.public-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.public-brand { color: #101d31; }
+
+.public-sign-in-button,
+.public-cancel-button {
+  border: 1px solid #aeb8c6;
+  border-radius: 9px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #17263d;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.public-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.65fr);
+  gap: clamp(28px, 7vw, 92px);
+  align-items: center;
+  padding: clamp(72px, 13vw, 158px) 0 clamp(64px, 10vw, 112px);
+}
+
+.public-hero h1,
+.public-workflow h2,
+.public-current-build h2 {
+  max-width: 760px;
+  margin: 8px 0 18px;
+  font-size: clamp(38px, 5.6vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+}
+
+.public-hero-copy > p:not(.eyebrow) {
+  max-width: 640px;
+  margin: 0;
+  color: #536276;
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.55;
+}
+
+.public-actions,
+.public-login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.public-primary-action {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 17px;
+  background: #142641;
+  color: white;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.public-primary-action:hover { background: #0b1a2d; }
+
+.public-primary-action:disabled { cursor: wait; opacity: 0.65; }
+
+.public-actions a { color: #314f75; font-size: 13px; font-weight: 700; }
+
+.public-principle,
+.public-workflow article,
+.public-capability-grid article,
+.public-login-panel {
+  border: 1px solid #d3dce7;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 18px 44px rgba(42, 61, 89, 0.07);
+}
+
+.public-principle { padding: 28px; }
+
+.public-principle strong { display: block; margin-top: 12px; font-size: 25px; line-height: 1.2; }
+
+.public-principle p { margin: 12px 0 0; color: #5e6a7a; line-height: 1.55; }
+
+.public-workflow,
+.public-current-build { padding-top: 44px; }
+
+.public-workflow h2,
+.public-current-build h2 { font-size: clamp(30px, 4vw, 48px); }
+
+.public-workflow-grid,
+.public-capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.public-workflow article,
+.public-capability-grid article { padding: 23px; }
+
+.public-workflow article > span { color: #60728a; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; }
+
+.public-workflow h3,
+.public-capability-grid h3 { margin: 22px 0 8px; font-size: 18px; }
+
+.public-workflow p,
+.public-capability-grid p { margin: 0; color: #626f7d; font-size: 14px; line-height: 1.55; }
+
+.public-capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.public-capability-grid h3 { margin-top: 0; }
+
+.public-status {
+  margin-top: 52px;
+  padding: 20px 0 0;
+  border-top: 1px solid #ccd5df;
+  color: #4e5b6b;
+}
+
+.public-status strong { color: #17263d; }
+
+.public-status p { margin: 6px 0 0; font-size: 14px; }
+
+.public-login-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(300px, 1.15fr);
+  gap: 36px;
+  margin-top: 52px;
+  padding: 30px;
+}
+
+.public-login-panel h2 { margin: 8px 0; font-size: 28px; }
+
+.public-login-panel > div > p:last-child { margin: 0; color: #5d6a7a; line-height: 1.5; }
+
+.public-login-panel form { display: grid; gap: 14px; }
+
+.public-login-panel label { display: grid; gap: 7px; color: #465466; font-size: 13px; font-weight: 700; }
+
+.public-login-panel input { width: 100%; border: 1px solid #bfc9d6; border-radius: 8px; padding: 11px 12px; background: white; color: #17263d; font: inherit; }
+
+.public-login-panel input:focus { border-color: #416890; outline: 3px solid rgba(65, 104, 144, 0.14); }
+
+.public-login-actions { margin-top: 2px; }
+
+@media (max-width: 760px) {
+.public-landing { padding: 20px 18px 42px; }
+
+.public-nav .atlas-brand__wordmark { font-size: 14px; letter-spacing: 0.12em; }
+
+.public-hero,
+.public-login-panel { grid-template-columns: 1fr; }
+
+.public-hero { padding: 68px 0 55px; gap: 34px; }
+
+.public-workflow-grid,
+.public-capability-grid { grid-template-columns: 1fr; }
+
+.public-login-panel { gap: 20px; padding: 22px; }
+}
+
+.public-about-hero {
+  display: block;
+  padding: clamp(72px, 11vw, 122px) 0 clamp(52px, 7vw, 78px);
+}
+
+.public-about-hero h1 {
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.public-about-hero > p:not(.eyebrow) {
+  max-width: 690px;
+}
+
+.public-about-hero .public-primary-action {
+  margin-top: 28px;
+}
+
+.public-principle-statement,
+.public-what,
+.public-values,
+.public-current-build {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  padding-top: 58px;
+}
+
+.public-values {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(32px, 7vw, 82px);
+  align-items: start;
+}
+
+.public-values h2 {
+  margin: 8px 0 0;
+  color: #101d31;
+  font-size: clamp(28px, 3.5vw, 43px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.public-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  border-top: 1px solid #aebdcd;
+}
+
+.public-values-grid article { padding: 18px 0; border-bottom: 1px solid #cbd5df; }
+.public-values-grid h3 { margin: 0 0 8px; font-size: 17px; }
+.public-values-grid p { margin: 0; color: #5e6b7a; font-size: 14px; line-height: 1.55; }
+.public-what-grid article > span { display: block; margin-bottom: 18px; color: #42658d; font-size: 12px; font-weight: 800; letter-spacing: .08em; }
+
+.public-principle-statement {
+  max-width: 900px;
+  margin-left: max(0px, calc((100% - 1120px) / 2));
+  padding: 30px 0 4px 26px;
+  border-left: 3px solid #284d76;
+}
+
+.public-principle-statement h2,
+.public-what h2,
+.public-current-build h2 {
+  margin: 8px 0 14px;
+  color: #101d31;
+  font-size: clamp(28px, 3.5vw, 43px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.public-principle-statement > p:last-child {
+  max-width: 690px;
+  margin: 0;
+  color: #59687a;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.public-what-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  margin-top: 28px;
+}
+
+.public-what-grid article {
+  padding-top: 18px;
+  border-top: 1px solid #aebdcd;
+}
+
+.public-what-grid h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.public-what-grid p {
+  margin: 0;
+  color: #5e6b7a;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.public-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 36px;
+  margin: 30px 0 0;
+  border-top: 1px solid #b9c5d2;
+}
+
+.public-stack > div {
+  display: grid;
+  grid-template-columns: minmax(122px, 0.42fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #d4dce5;
+}
+
+.public-stack dt {
+  color: #56677b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.public-stack dd {
+  margin: 0;
+  color: #142641;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.public-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 58px;
+  padding-top: 18px;
+}
+
+.public-status p { display: none; }
+
+@media (max-width: 760px) {
+.public-principle-statement {
+    margin-left: 0;
+    padding-left: 18px;
+  }
+
+.public-what-grid,
+.public-stack { grid-template-columns: 1fr; }
+
+.public-values { grid-template-columns: 1fr; gap: 24px; }
+.public-values-grid { grid-template-columns: 1fr; }
+
+.public-stack > div { grid-template-columns: 1fr; gap: 5px; }
+}
+
+.public-about-page {
+  min-height: 100vh;
+  padding: 20px clamp(20px, 5vw, 88px) 24px;
+  background:
+    radial-gradient(circle at 82% 4%, rgba(67, 118, 181, 0.3), transparent 32rem),
+    linear-gradient(180deg, #162231 0%, #111a26 58%, #152131 100%);
+  color: #f2f5f8;
+}
+
+.public-about-page .public-nav,
+.public-about-page .public-hero,
+.public-about-page .public-principle-statement,
+.public-about-page .public-what,
+.public-about-page .public-values,
+.public-about-page .public-current-build,
+.public-about-page .public-status {
+  width: min(1050px, 100%);
+  margin-inline: auto;
+}
+
+.public-about-page .public-brand { color: #f7f9fb; }
+
+.public-about-page .public-nav { padding: 0; }
+
+.public-about-page .public-sign-in-button {
+  border-color: #607086;
+  background: transparent;
+  color: #f6f8fb;
+}
+
+.public-about-page .public-sign-in-button:hover { border-color: #b7c8df; background: rgba(255, 255, 255, 0.06); }
+
+.public-about-page .public-about-hero {
+  display: block;
+  padding: 44px 0 32px;
+}
+
+.public-about-page .public-about-hero > .release-badge {
+  margin-top: 14px;
+  color: #cbd9e8;
+}
+
+.public-about-page .eyebrow,
+.public-about-page .public-stack dt { color: #91a4bb; }
+
+.public-about-page .public-about-hero h1 {
+  max-width: 760px;
+  margin: 9px 0 19px;
+  color: #f7f9fb;
+  font-size: clamp(40px, 5.4vw, 66px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.public-about-page .public-hero-copy {
+  max-width: 670px;
+  margin: 0;
+  color: #d0dae5;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.public-about-page .public-hero-principle {
+  max-width: 670px;
+  margin: 22px 0 0;
+  color: #d6e1ed;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.public-about-page .public-hero-principle strong { color: #f3f7fc; }
+
+.public-about-page .public-primary-action {
+  margin-top: 28px;
+  background: #eaf1fa;
+  color: #14243a;
+}
+
+.public-about-page .public-primary-action:hover { background: #ffffff; }
+
+.public-about-page .public-what,
+.public-about-page .public-current-build {
+  padding-top: 56px;
+  border-top: 1px solid #2c3a4d;
+}
+
+.public-about-page .public-principle-statement {
+  max-width: 1050px;
+  padding: 42px 0;
+  border-top: 1px solid #34465b;
+  border-left: 0;
+}
+
+.public-about-page .public-principle-statement h2,
+.public-about-page .public-values h2 {
+  color: #f4f7fb;
+}
+
+.public-about-page .public-principle-statement > p:last-child {
+  color: #c5d1de;
+}
+
+.public-about-page .public-values {
+  grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(36px, 7vw, 76px);
+  margin-top: 48px;
+  padding-top: 44px;
+  border-top: 1px solid #34465b;
+}
+
+.public-about-page .public-values-grid {
+  border-top-color: #4a5e74;
+}
+
+.public-about-page .public-values-grid article {
+  padding: 16px 0;
+  border-bottom-color: #34465b;
+}
+
+.public-about-page .public-values-grid h3 {
+  color: #f0f4f9;
+}
+
+.public-about-page .public-values-grid p {
+  color: #bdcad8;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.public-about-page .public-what h2,
+.public-about-page .public-current-build h2 {
+  max-width: 720px;
+  margin: 8px 0 0;
+  color: #f4f7fb;
+  font-size: clamp(27px, 3.4vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+
+.public-about-page .public-what-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+  margin-top: 26px;
+}
+
+.public-about-page .public-what-grid article {
+  padding: 0;
+  border: 0;
+}
+
+.public-about-page .public-what-grid h3 {
+  margin: 0 0 9px;
+  color: #f0f4f9;
+  font-size: 17px;
+}
+
+.public-about-page .public-what-grid p {
+  margin: 0;
+  color: #bdcad8;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.public-about-page .public-current-build {
+  margin-top: 44px;
+  padding-top: 44px;
+}
+
+.public-about-page .public-build-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.public-about-page .public-build-heading > p {
+  max-width: 330px;
+  margin: 0;
+  color: #bdcad8;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.public-about-page .public-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 42px;
+  margin-top: 20px;
+  border-top-color: #38495d;
+}
+
+.public-about-page .public-stack > div {
+  grid-template-columns: minmax(114px, 0.39fr) minmax(0, 1fr);
+  border-bottom-color: #2b3a4c;
+  padding-block: 13px;
+}
+
+.public-about-page .public-stack dd { color: #e0e8f1; font-weight: 500; }
+
+.public-about-page .public-status {
+  margin-top: 34px;
+  padding-top: 15px;
+  border-top-color: #2c3a4d;
+  color: #9eb0c3;
+}
+
+.public-about-page .public-status strong { color: #dce7f2; }
+
+@media (max-width: 760px) {
+.public-about-page {
+    padding: calc(20px + env(safe-area-inset-top))
+      max(18px, env(safe-area-inset-right))
+      calc(34px + env(safe-area-inset-bottom))
+      max(18px, env(safe-area-inset-left));
+  }
+
+.public-about-page .public-about-hero { padding: 68px 0 56px; }
+
+.public-about-page .public-what-grid,
+.public-about-page .public-stack { grid-template-columns: 1fr; }
+
+.public-about-page .public-what-grid { gap: 24px; }
+
+.public-about-page .public-build-heading { display: block; }
+
+.public-about-page .public-build-heading > p { margin-top: 14px; }
+
+.public-about-page .public-stack > div { grid-template-columns: 1fr; gap: 6px; }
+}
+
+.public-about-page .public-sign-in-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  padding: 8px 2px;
+  color: #c8d6e5;
+  font-size: 13px;
+}
+
+.public-about-page .public-sign-in-button:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+.public-about-page .public-primary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 16px 12px 18px;
+  border: 1px solid #5494ed;
+  border-radius: 8px;
+  background: #2878dc;
+  box-shadow: 0 10px 24px rgba(10, 44, 89, 0.36);
+  color: #fff;
+}
+
+.public-about-page .public-primary-action:hover {
+  border-color: #75aeff;
+  background: #3b88eb;
+  color: #fff;
+}
+
+.public-about-page .public-primary-action span,
+.public-about-page .public-sign-in-button span {
+  transition: transform 140ms ease;
+}
+
+.public-about-page .public-primary-action:hover span,
+.public-about-page .public-sign-in-button:hover span {
+  transform: translateX(3px);
+}
+
+.public-about-page .public-nav .public-sign-in-button {
+  border: 1px solid #6e87a5;
+  border-radius: 8px;
+  padding: 9px 13px;
+  background: rgba(37, 72, 116, 0.46);
+  color: #f4f8fd;
+  font-weight: 750;
+}
+
+.public-about-page .public-nav .public-sign-in-button:hover {
+  border-color: #9eb6d3;
+  background: rgba(50, 96, 151, 0.68);
+}
+
+.public-about-page .public-about-hero {
+  padding-bottom: 32px;
+}
+
+.public-about-page .public-hero-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.public-about-page .public-about-hero .public-primary-action {
+  margin-top: 0;
+  border-color: #627995;
+  background: transparent;
+  box-shadow: none;
+  color: #e8f1fb;
+}
+
+.public-about-page .public-about-hero .public-primary-action:hover {
+  border-color: #a0b7d2;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.public-about-page .public-what {
+  padding-top: 44px;
+}
+
+@media (max-width: 760px) {
+.public-about-page .public-about-hero {
+    padding: 32px 0 26px;
+  }
+
+.public-about-page .public-principle-statement {
+    padding: 32px 0;
+  }
+
+.public-about-page .public-what {
+    padding-top: 34px;
+  }
+
+.public-about-page .public-values {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 38px;
+    padding-top: 34px;
+  }
+
+.public-about-page .public-current-build {
+    margin-top: 38px;
+    padding-top: 34px;
+  }
+
+.public-about-page .public-hero-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+.public-about-page .public-hero-actions .public-primary-action {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+/* Keep the canonical product story intact when it is rendered inside the authenticated shell. */
+.public-about-page--embedded {
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+}
