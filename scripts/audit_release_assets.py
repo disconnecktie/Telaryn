@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 FRONTEND = ROOT / "frontend"
 SEARCH_EXTENSIONS = {".js", ".jsx", ".ts", ".tsx", ".css", ".html", ".json", ".md", ".webmanifest"}
 
-# These are legacy Atlas or starter-template assets. They are not referenced
-# by Telaryn's current HTML/manifest and should be excluded from public release.
+# These legacy Atlas, starter-template, and inherited social-icon assets
+# are unreferenced by the release source and excluded from its current tree.
 LEGACY_ASSETS = (
     "atlas-icon-180.png",
     "atlas-icon-192.png",
@@ -21,6 +21,7 @@ LEGACY_ASSETS = (
     "favicon.svg",
     "react.svg",
     "vite.svg",
+    "icons.svg",  # Unused inherited social-network icon sprite
 )
 CURRENT_ASSETS = (
     "telaryn-mark.svg",

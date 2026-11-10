@@ -82,29 +82,34 @@ and runtime distributions have separate third-party obligations.
 - `frontend/public/telaryn-mark.svg` and Telaryn product artwork are presented
   under the first-party proprietary notice **only to the extent they are original
   works owned by Telaryn's copyright owner**.
-- Seven unused assets were excluded from the current release tree after
+- Eight unused assets were excluded from the current release tree after
   an automated reference audit. Their exact historical paths are
   `frontend/public/atlas-icon.png`,
   `frontend/public/atlas-icon-180.png`,
   `frontend/public/atlas-icon-192.png`,
   `frontend/public/atlas-icon-512.png`,
   `frontend/public/favicon.svg`,
-  `frontend/src/assets/react.svg`, and
-  `frontend/src/assets/vite.svg`.
+  `frontend/src/assets/react.svg`,
+  `frontend/src/assets/vite.svg`, and
+  `frontend/public/icons.svg`.
   Their deletion commits were examined on 10 November 2026; the content remains
   accessible through older commits of the same repository. **A source-available
   release exposing these commits requires rights/provenance review of the
   historical files too**, or a separately approved history strategy.
-  Deleting a path from the current tree is not enough.
-- `frontend/public/icons.svg` contains identifiable Bluesky, Discord,
-  GitHub, and X social-platform symbol artwork alongside generic icons.
+  Deleting a path from the current tree is not enough. The
+  [official Vite create-vite license](https://github.com/vitejs/vite/blob/main/packages/create-vite/LICENSE)
+  makes Vite-generated starter template files CC0, but this does not transfer
+  React, Vite or other brand/trademark rights or establish that every
+  historical SVG was sourced from that exact release.
+- Historical `frontend/public/icons.svg` contained identifiable Bluesky,
+  Discord, GitHub, and X social-platform symbol artwork alongside generic icons.
   The owner explicitly confirmed on 10 November 2026 that these symbols were
   **not assets they supplied**. The same confirmation applies to the React/Vite
   starter logos in the historical commits. These are third-party or inherited
   template assets, **not first-party Telaryn/Atlas image creations**, and the
-  proprietary license makes no ownership claim over them. The social icon file
-  remains in the current tree; the React/Vite starter assets were removed
-  from the current tree but remain in prior commits.
+  proprietary license makes no ownership claim over them. The sprite has
+  been removed from the current tree after a no-reference guard was added;
+  it and the React/Vite starter icons remain available in prior Git commits.
   The social glyphs are subject to their respective brand guidelines and
   potentially copyright terms. For example,
   [Bluesky's social-icon guidance](https://bsky.social/about/support/branding)
@@ -112,7 +117,10 @@ and runtime distributions have separate third-party obligations.
   [GitHub's brand toolkit](https://brand.github.com/foundations/logo)
   defines authorized uses of its logos. Neither gives Telaryn exclusive ownership
   of those marks. Confirm the actual SVGs' origin/redistribution rights or
-  replace them; assess the historical starter-logo contents separately.
+  replace them if reused; assess the historical starter-logo contents separately.
+  No active public frontend reference to the sprite was found in targeted
+  manual inspection; CI checks source references across all frontend text
+  files before accepting its absence.
 - **Owner-provided provenance statement (9 November 2026):** The Telaryn
   owner confirmed they personally generated all four PNG assets remaining in
   the current source tree: `frontend/public/telaryn-apple-touch-icon.png`,
@@ -124,23 +132,24 @@ and runtime distributions have separate third-party obligations.
   platform's commercial/distribution terms. AI-generated elements may have
   limited copyright protection depending on jurisdiction and human authorship.
 - **Owner-provided historical Atlas provenance statement (10 November 2026):**
-  In response to the direct question about the four legacy Atlas icon PNGs and
-  historical `frontend/public/favicon.svg`, the owner confirmed they created
-  the Atlas and Telaryn images, including the historical Atlas branding.
-  This attests to the four `atlas-icon*.png` files and old favicon; these
-  remain accessible in the retained Git commit history even though removed
-  from the current tree. The statement does **not** establish provenance or
-  redistribution permission for the former React/Vite starter SVGs or the
-  current social-platform symbols in `frontend/public/icons.svg`. Ownership
-  and downstream reuse rights depend on human-authored expression, the image
-  generation platform's terms, and any third-party marks or source materials.
+  Owner reported creating the Atlas and Telaryn branding using ChatGPT, in
+  response to a question covering four historical Atlas PNGs and an old
+  favicon. The four `atlas-icon*.png` files are owner-attested first-party
+  creations. Subsequent source inspection found the separately tracked
+  `frontend/public/favicon.svg` is a **Vite-branded graphic**; its origin
+  cannot responsibly be treated as independently verified first-party
+  ChatGPT output merely from the broader answer. Classify that SVG with the
+  framework/template marks pending source attribution. All five old files
+  remain accessible in Git history; neither the historical React/Vite logos
+  nor social-network glyphs are claimed as owner-created.
 
 ## ChatGPT image-generation provenance and rights review (10 November 2026)
 
-The owner confirmed that **ChatGPT** was the generation tool for their Atlas and
-Telaryn imagery, covering the four active Telaryn PNGs, four historical Atlas
-icon PNGs and the historical Atlas favicon. This supplements the owner-provided
-provenance statements above; no prompts, accounts or private conversations are
+The owner confirmed that **ChatGPT** was the generation tool for their Atlas
+and Telaryn artwork, covering four active Telaryn PNGs and four historical
+Atlas icon PNGs. The old `favicon.svg` is Vite-branded and its own provenance
+needs separate treatment, as discussed above. This supplements the
+owner-provided statements; no prompts, accounts or private conversations are
 included in the public candidate.
 
 The [OpenAI Terms of Use](https://openai.com/policies/terms-of-use/) effective
@@ -172,8 +181,9 @@ Privacy and Terms policies accurately describe its current behavior.
 classifications for the three flagged Python packages checked against current
 official documentation; unused starter/legacy assets removed only from the
 current tree. Owner-attested provenance recorded for four current PNGs
-and historical Atlas branding (four PNGs and an old favicon).
+and four historical Atlas icon PNGs. The old Vite-branded favicon is
+considered separately as a template/brand-mark asset.
 OpenAI ChatGPT output-use terms reviewed and generator identified; exclusive
-copyright, third-party social glyph/starter-logo rights, built-distribution
+copyright, historical third-party glyph/starter-logo rights, built-distribution
 notices, retained-history content, and final owner/legal approval remain
 pending.**
