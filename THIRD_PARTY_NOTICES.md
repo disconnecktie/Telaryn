@@ -121,6 +121,36 @@ and runtime distributions have separate third-party obligations.
   No active public frontend reference to the sprite was found in targeted
   manual inspection; CI checks source references across all frontend text
   files before accepting its absence.
+### Historical third-party icon policy review (10 November 2026)
+
+An additional inspection of retained historical SVG content identified the
+exact glyph types and confirmed that they remain **absent from the current
+release tree**, but exposed in Git commits if the repository becomes public:
+
+| Former path | Historical content | Upstream use-rights context |
+| --- | --- | --- |
+| `frontend/public/favicon.svg` | Vite-style graphical mark | May be from a create-vite template; precise upstream file/version not independently matched |
+| `frontend/src/assets/vite.svg` | Vite graphical mark | Vite [create-vite template files are CC0](https://github.com/vitejs/vite/blob/main/packages/create-vite/LICENSE), if the copied file originated in that template; trademark rights are separate |
+| `frontend/src/assets/react.svg` | React atom-style logo, class `iconify--logos` | Mark is not the creator's proprietary artwork; original icon distributor/license and trademark permissions have not been independently established |
+| `frontend/public/icons.svg` | Bluesky butterfly, Discord, GitHub Invertocat, X emblem, plus generic social/documentation glyphs | Historical SVG sprite has no confirmed attribution chain; [Bluesky](https://bsky.social/about/support/branding), [Discord](https://discord.com/branding), [GitHub](https://brand.github.com/foundations/logo) and [X](https://about.x.com/en/who-we-are/brand-toolkit) each impose independent brand-use limits |
+
+**Rights distinction:** Vite's license grants CC0 to files copied from its
+`template-*` directories; the create-vite package itself is MIT. Neither
+license releases other organizations' trademarks, guarantees the exact historical
+SVG came from that distribution, or grants unrestricted use of modified
+platform logos. The old social glyphs do not appear to have been active UI
+dependencies, and the current release source has removed them. This inspection
+does **not** claim blanket legal clearance for publishing their *retained Git
+history*.
+
+Before source publication, the owner must explicitly choose between:
+(a) making the existing repository's historical SVGs visible while preserving
+the third-party carve-outs and accepting the remaining provenance/rights
+questions, subject to appropriate legal review; or (b) preparing a separate
+clean-history source candidate (or another specifically approved content
+remediation) that does not carry the old third-party icons. **No history rewrite,
+repository replacement, publication or deployment is authorized by this note.**
+
 - **Owner-provided provenance statement (9 November 2026):** The Telaryn
   owner confirmed they personally generated all four PNG assets remaining in
   the current source tree: `frontend/public/telaryn-apple-touch-icon.png`,
