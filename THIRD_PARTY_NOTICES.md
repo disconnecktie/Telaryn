@@ -261,6 +261,50 @@ Git commits if the repository is published, although they are absent from the
 current source tree. This matching is limited to these four SVGs, not the
 full-history security/privacy review, other dependencies, or built artifacts.
 
+## Final source-publication rights assessment (10 November 2026)
+
+**Scope:** Proposed publication of the existing Telaryn source Git repository,
+with retained Git history, under its first-party proprietary LICENSE.
+**Excluded from this source-publication assessment:** distribution of built Docker
+images, native wheels, installed Python/npm packages, hosted-service deployment,
+or permission to use third-party marks as Telaryn branding.
+
+| Component | Verified evidence | Source-publication disposition |
+| --- | --- | --- |
+| JS dependencies | 246 non-root package lockfile records inventoried by declared license (MIT, Apache-2.0, ISC, MPL-2.0, BSD-2/3, MIT-0, CC-BY-4.0, BlueOak-1.0.0). No installed npm packages or build bundles tracked | Metadata-based source-reference review complete; retain attribution to Can I Use, link upstream terms; package-byte and compiled-bundle redistribution audits remain separate |
+| Python dependencies | CI metadata inventory for 62 pinned runtime packages; official license texts independently checked for `psycopg[binary]` (LGPLv3), `certifi` (MPL-2.0), and `tqdm` (file-specific MPL-2.0/MIT) | No vendored wheels or libraries in tracked source; no identified condition that automatically relicenses the original first-party source. A shipped image/wheel requires its own native-library inventory and compliance package |
+| Historical starter SVGs | Four files byte-identical to official `vitejs/vite/packages/create-vite/template-react/` equivalents; create-vite LICENSE places files in `template-*` directories under CC0 | Origin and stated template-file copyright license substantiated. These historical files are not claimed as exclusive Telaryn assets. Third-party trademark and endorsement restrictions remain separate |
+| Current and prior AI-generated PNG artwork | Owner attests generation through ChatGPT; OpenAI consumer Terms effective 1 January 2026 assign output rights as between user/OpenAI to extent permitted by law | Use rights supported; exclusive copyrightability, similarity to third-party works and trademark clearance are not independently established. LICENSE claims only protectable owned expression |
+| Third-party brands and marks | Historical template contains React, Vite and social-network symbols; no current-tree use for the four historical SVG files | No general trademark license claimed; keep third-party identification factual, avoid suggesting sponsorship/endorsement; legal assessment needed before use as promotional branding |
+| Telaryn proprietary notice | First-party rights expressly reserved, third-party licensed materials excluded, hosted-service terms separated | No apparent conflict found at source-reference level; proprietary terms cannot override licenses applicable to third-party material |
+
+**Official upstream sources checked:**
+- [Vite create-vite license and template CC0 scope](https://github.com/vitejs/vite/blob/main/packages/create-vite/LICENSE)
+- [Psycopg LGPLv3 text](https://github.com/psycopg/psycopg/blob/master/LICENSE.txt), and [binary installation guidance](https://www.psycopg.org/psycopg3/docs/basic/install.html)
+- [Certifi Mozilla-derived CA bundle license](https://github.com/certifi/python-certifi/blob/master/LICENSE)
+- [tqdm per-file licenses](https://github.com/tqdm/tqdm/blob/master/LICENCE)
+- [Can I Use / caniuse-lite license and attribution](https://github.com/browserslist/caniuse-lite#license)
+- [OpenAI consumer Terms of Use effective 1 January 2026](https://openai.com/policies/terms-of-use/)
+- [US Copyright Office AI copyrightability guidance](https://www.copyright.gov/newsnet/2025/1060.html)
+
+**Technical rights-review conclusion:** No newly identified third-party license
+conflict blocks publishing the reviewed source *on the evidence examined*,
+provided existing third-party exceptions and attribution are retained. This
+conclusion is limited to upstream metadata, direct inspected files and listed
+license texts. It does **not** certify every dependency or historical byte,
+grant trademark permissions, establish exclusive copyright in AI output, or
+serve as legal counsel's opinion. The existing historical asset analysis above
+contains earlier provisional observations superseded by later exact-match
+verification.
+
+**Open before public visibility:** Owner's final sign-off on the exact source
+tree and retained history; unresolved disclosure/privacy concerns (if any);
+evaluation of legal/trademark risk as warranted. Independently inventory
+installed dependencies, bundled native libraries, actual frontend distribution
+contents, notices and license texts **before shipping built binaries or images**.
+Changing visibility, merging the PR or deploying to production still requires
+separate authorization.
+
 ## Release handling
 
 Before making this repository public, the owner should confirm the included
