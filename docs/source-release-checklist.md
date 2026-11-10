@@ -15,7 +15,7 @@ This checklist applies to the **private** `release/source-candidate` branch. Do 
 - [ ] **Owner source review:** Inspect every file in this branch and verify no internal identities, privileged account information, cloud resource names, URLs, recovery targets, personal contact details or private work content remain. Initial pattern checks are not a comprehensive secret or privacy audit.
 - [x] **Public-candidate migration hardening:** `alembic/versions/a108b010c002_repair_production_bootstrap_owner.py` no longer includes a fixed production administrator email and now requires an explicit environment approval for a placeholder-owner repair. Added tests for repair, refusal, and no-op. **Atlas originals and deployed databases were not modified.**
 - [ ] **Migration compatibility sign-off:** Confirm the public-only migration revision is appropriate for future clean installs and that it will never be used to update production without a separately reviewed deployment path.
-- [ ] **Content and identity review:** Review `frontend/src/pages/AboutJay.jsx`, `frontend/src/devlog/entries.js`, public policy copy, published contact details, and other user-visible content for intentional disclosure.
+- [x] **Public biography and devlog disclosure approved by owner:** On 9 November 2026, the owner confirmed `frontend/src/pages/AboutJay.jsx` and `frontend/src/devlog/entries.js` are already publicly visible and approved retaining that content in this source candidate, including the LinkedIn/GitHub links and general military/Intelligence Community and software-development background. Review of hosted service legal/policy text remains a separate gate.
 - [x] **Automated history scanning:** Private Gitleaks full-ref run [#42662313992](https://github.com/disconnecktie/Telaryn/actions/runs/42662313992) passed. CI [#42662313813](https://github.com/disconnecktie/Telaryn/actions/runs/42662313813) also passed a separate all-reachable-commit tree/path and known-marker audit. Recheck both at the exact final publication head; these are not a guarantee that no sensitive material exists.
 - [x] **Commit metadata disclosure accepted:** The owner understands that public Git history exposes author and committer metadata, including the existing personal email address, and is comfortable with that exposure. **No additional repository or history rewrite is required solely for this reason.**
 - [x] **JavaScript dependency license inventory:** Added [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), covering 246 npm lockfile package records, less common declared licenses, and upstream Can I Use compatibility-data attribution.
@@ -60,9 +60,8 @@ Azure identifiers into a PR comment or public repository.
 - [x] **Inbound contact operation (owner-confirmed):** Owner confirms all three
   support, privacy and security email addresses work properly in Microsoft 365.
   No independent external test mail or mailbox evidence was retrieved in this review.
-- [ ] **Public content review:** Approve the user-visible About page, founder
-  biography/LinkedIn/GitHub links, devlog engineering timeline, policy
-  contacts, legal terms and updated Privacy revision effective date.
+- [x] **Founder biography and devlog content (owner-approved):** Owner confirms the About page, professional links, and engineering journal are already publicly available and approves their inclusion in the proposed source-visible repository.
+- [ ] **Public legal-policy approval:** Final owner review of `LICENSE`, Terms, updated Privacy revision effective date and any notices required to users remains outstanding, independent of the biography/devlog disclosure approval.
 - [ ] **Repository settings:** Verify branch protections/rulesets where available,
   vulnerability reporting, security alerts, Actions permissions, and branch
   visibility controls before any GitHub publication.
