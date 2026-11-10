@@ -230,6 +230,37 @@ attribution, any required notices, legal/trademark permissions, and review of
 other historical disclosures remain open. Do not treat this note as permission to
 publish, modify repository visibility, or ship compiled distributions.
 
+## Verified original Vite template provenance (10 November 2026)
+
+A direct **byte-for-byte UTF-8 content comparison** through GitHub's file
+contents API matched all four historical Telaryn SVGs at their original
+source-staging commits to the current official Vite `create-vite/template-react`
+source files. Both compared contents and lengths were identical:
+
+| Historical Telaryn path | Vite template source at `vitejs/vite` |
+| --- | --- |
+| `frontend/public/favicon.svg` | [`packages/create-vite/template-react/public/favicon.svg`](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-react/public/favicon.svg) |
+| `frontend/src/assets/react.svg` | [`packages/create-vite/template-react/src/assets/react.svg`](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-react/src/assets/react.svg) |
+| `frontend/src/assets/vite.svg` | [`packages/create-vite/template-react/src/assets/vite.svg`](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-react/src/assets/vite.svg) |
+| `frontend/public/icons.svg` | [`packages/create-vite/template-react/public/icons.svg`](https://github.com/vitejs/vite/blob/main/packages/create-vite/template-react/public/icons.svg) |
+
+The [official create-vite LICENSE](https://github.com/vitejs/vite/blob/main/packages/create-vite/LICENSE)
+applies CC0 1.0 Universal to files under `template-*` directories and
+files generated from them. This **resolves the provenance and copyright-license
+classification of these exact four template copies**; earlier sections describing
+their template provenance as unverified reflect earlier inspection stages, not
+the latest result. The React SVG also matches the Vite template rather than
+requiring an inferred independent Iconify redistribution chain.
+
+**Separate rights remain:** CC0 for starter-template file content does not
+grant exclusive ownership or waive brands' trademark restrictions or imply
+endorsement. The embedded React, Vite, Bluesky, Discord, GitHub and X marks
+must be characterized as third-party marks. No attempt is made to relicense
+them as Telaryn-owned artwork. Historical files remain accessible in retained
+Git commits if the repository is published, although they are absent from the
+current source tree. This matching is limited to these four SVGs, not the
+full-history security/privacy review, other dependencies, or built artifacts.
+
 ## Release handling
 
 Before making this repository public, the owner should confirm the included
