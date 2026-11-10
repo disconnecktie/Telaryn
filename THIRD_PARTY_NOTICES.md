@@ -125,6 +125,32 @@ and runtime distributions have separate third-party obligations.
   and downstream reuse rights depend on human-authored expression, the image
   generation platform's terms, and any third-party marks or source materials.
 
+## ChatGPT image-generation provenance and rights review (10 November 2026)
+
+The owner confirmed that **ChatGPT** was the generation tool for their Atlas and
+Telaryn imagery, covering the four active Telaryn PNGs, four historical Atlas
+icon PNGs and the historical Atlas favicon. This supplements the owner-provided
+provenance statements above; no prompts, accounts or private conversations are
+included in the public candidate.
+
+The [OpenAI Terms of Use](https://openai.com/policies/terms-of-use/) effective
+January 1, 2026 state that, as between the user and OpenAI, the user owns Output
+to the extent permitted by applicable law, and OpenAI assigns any rights it may
+have in that Output. The [OpenAI ChatGPT help article](https://help.openai.com/en/articles/6783457-what-is-chatgpt)
+also confirms commercial reuse of generated output, subject to the Terms and
+applicable policies. Output may not be unique; these terms do not grant
+third-party intellectual-property or trademark rights.
+
+**Platform permission is not a finding of exclusive copyright.** Under the
+[U.S. Copyright Office's January 2025 guidance](https://www.copyright.gov/newsnet/2025/1060.html),
+copyright protection for AI-assisted images depends on sufficient human-authored
+expression; prompts alone may be insufficient. The degree of human editing and
+authorship for these particular image files has not been independently examined.
+Telaryn's proprietary notice therefore reserves rights only in legally
+protectable first-party expression, and it does not claim rights in third-party
+logos. No independent image-similarity or third-party-rights clearance has
+been performed.
+
 ## Release handling
 
 Before making this repository public, the owner should confirm the included
@@ -137,6 +163,7 @@ classifications for the three flagged Python packages checked against current
 official documentation; unused starter/legacy assets removed only from the
 current tree. Owner-attested provenance recorded for four current PNGs
 and historical Atlas branding (four PNGs and an old favicon).
-Built-distribution notices, social glyph/starter-logo rights, image-generation
-platform terms, historical metadata/content review, and final owner/legal
-approval remain pending.**
+OpenAI ChatGPT output-use terms reviewed and generator identified; exclusive
+copyright, third-party social glyph/starter-logo rights, built-distribution
+notices, retained-history content, and final owner/legal approval remain
+pending.**
