@@ -51,10 +51,31 @@ classifications:
 - `certifi==2026.7.22`: MPL-2.0 per installed metadata; [upstream license](https://github.com/certifi/python-certifi/blob/master/LICENSE).
 - `tqdm==4.70.0`: MPL-2.0 AND MIT per installed metadata; [upstream license and attribution](https://tqdm.github.io/licence/).
 
-These declarations require a targeted distribution/notice review. Build-time and
-runtime distributions may have different obligations. This is a package metadata
-inventory, not a legal conclusion or a substitute for the actual upstream license
-texts and distributed binary contents.
+### Upstream license-text and distribution-scope review (10 November 2026)
+
+An initial upstream-source check supports the three license classifications above:
+
+- **Psycopg 3.2.10:** PyPI declares LGPLv3 for the pinned `psycopg` release.
+  The `[binary]` extra installs a separately packaged, self-contained
+  `psycopg-binary` implementation, including compiled components and bundled
+  native libraries. [Psycopg installation and bundled-binary explanation](https://www.psycopg.org/psycopg3/docs/basic/install.html)
+  and [pinned PyPI release](https://pypi.org/project/psycopg/3.2.10/).
+  **Before distributing a production Docker image or binary package**, inventory
+  the actual installed wheel and native libraries and fulfill all applicable
+  notices and LGPL requirements; the source repository does not contain the wheel.
+- **Certifi:** PyPI confirms MPL-2.0, and the [upstream LICENSE](https://github.com/certifi/python-certifi/blob/master/LICENSE)
+  describes the Mozilla-derived certificate authority bundle. Retain upstream
+  notices when redistributing that bundled data in a packaged application.
+- **tqdm:** The [upstream license text](https://tqdm.github.io/licence/)
+  identifies MPL-2.0 for principally maintained files and MIT terms for specified
+  contributions. Its project-level combined metadata does **not** imply every
+  file can be relicensed as MIT.
+
+This is a **source-level license classification and notice-scope check**, not
+independent verification of every package byte, legal advice, or distribution
+approval. No installed dependency wheels, `node_modules/`, Docker images,
+or built frontend bundles are committed to this source candidate. Build-time
+and runtime distributions have separate third-party obligations.
 
 ## Artwork, icons and marks
 
@@ -62,12 +83,26 @@ texts and distributed binary contents.
   under the first-party proprietary notice **only to the extent they are original
   works owned by Telaryn's copyright owner**.
 - Seven unused assets were excluded from the current release tree after
-  an automated reference audit: four `atlas-icon` PNGs, an unused favicon,
-  and starter React/Vite SVG logos. These older files still exist in historical
-  commits; removal from the current tree does not remove historical copyright
-  or trademark considerations.
-- `frontend/public/icons.svg` contains social-platform glyphs. Brand and
-  trademark rights are not granted by access to this repository.
+  an automated reference audit. Their exact historical paths are
+  `frontend/public/atlas-icon.png`,
+  `frontend/public/atlas-icon-180.png`,
+  `frontend/public/atlas-icon-192.png`,
+  `frontend/public/atlas-icon-512.png`,
+  `frontend/public/favicon.svg`,
+  `frontend/src/assets/react.svg`, and
+  `frontend/src/assets/vite.svg`.
+  Their deletion commits were examined on 10 November 2026; the content remains
+  accessible through older commits of the same repository. **A source-available
+  release exposing these commits requires rights/provenance review of the
+  historical files too**, or a separately approved history strategy.
+  Deleting a path from the current tree is not enough.
+- `frontend/public/icons.svg` contains identifiable Bluesky, Discord,
+  GitHub, and X social-platform symbol artwork alongside generic icons.
+  The markup remains tracked in the current tree; no license or right to
+  redistribute third-party graphic expression has been established by this
+  review. Brand and trademark rights are not granted by access to this repository.
+  Determine provenance and permitted redistribution, or replace the artwork
+  with controlled alternatives before publishing.
 - **Owner-provided provenance statement (9 November 2026):** The Telaryn
   owner confirmed they personally generated all four PNG assets remaining in
   the current source tree: `frontend/public/telaryn-apple-touch-icon.png`,
@@ -86,7 +121,9 @@ dependencies and assets may be distributed in source form, attach or retain
 required copyright notices where relevant, and confirm the hosted application's
 Privacy and Terms policies accurately describe its current behavior.
 
-**Status: JS/Python package metadata inventories complete; unused starter/legacy
-assets removed. Owner-attested provenance recorded for the four remaining PNGs.
-Final upstream license, platform terms, social marks and historical asset review
-remain pending.**
+**Status: JS/Python package metadata inventories complete; upstream license
+classifications for the three flagged Python packages checked against current
+official documentation; unused starter/legacy assets removed only from the
+current tree. Owner-attested provenance recorded for four current PNGs.
+Built-distribution license notices, social glyph provenance, generation-platform
+terms, historical asset ownership, and final legal/owner approval remain pending.**
