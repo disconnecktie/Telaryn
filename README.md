@@ -1,20 +1,29 @@
-# Telaryn — Private Source Release Candidate
+# Telaryn — Proprietary Source-Available Software
 
 Telaryn is an AI-assisted work management platform built around one principle:
 
 **AI proposes. Humans approve. Telaryn records. Privacy protects every step.**
 
-This **private review branch** contains a copied snapshot of application code,
-migrations, frontend assets, and selected tests for publication screening.
-It is **not yet cleared for public visibility or self-hosted production use**.
-Private operator runbooks, cloud infrastructure automation, deployment secrets,
-and prior Atlas Git history are deliberately excluded.
+Telaryn is **proprietary software, not open-source software**. When the source
+repository is publicly visible, GitHub visitors can view the code and use
+GitHub-provided forking permissions. This does **not** grant a general right
+to modify, redistribute, self-host, commercialize, or sublicense Telaryn.
+Read the [proprietary source-available notice](LICENSE) and
+[third-party notices](THIRD_PARTY_NOTICES.md) for the exact rights and
+exceptions. Hosted Telaryn accounts have separate service Terms.
 
-**Do not make this repository public yet.** The owner must review this exact
-snapshot, resolve the release blockers, run CI and independent security scans,
-and approve the exact history and current source. Telaryn is **proprietary and source-available, not open source**.
-The included [LICENSE](LICENSE) permits viewing and platform-authorized GitHub
-forking, but does not grant broad source-code reuse rights.
+This repository contains selected application code, database migrations,
+frontend assets, local-development configuration, and tests. It deliberately
+does **not** contain production infrastructure or secrets, private operator
+runbooks, or the historical commits of the original Atlas operations
+repository. Public Git history of *this* source repository is distinct from
+the private Atlas repository.
+
+Making this code visible does not deploy the Telaryn hosted application or
+authorize running the included developer configuration on the public internet.
+Before a new public-source release, maintainers must complete the
+[publication checklist](docs/source-release-checklist.md), run the exact-head
+security and functional checks, and obtain explicit owner approval.
 
 ## Application architecture
 
@@ -73,24 +82,25 @@ npm test
 npm run build
 ```
 
-This branch uses a separate, restricted CI workflow that excludes private
-Atlas infrastructure jobs. See `docs/source-release-checklist.md` for the
-remaining publication gates, including Alembic migration review and independent
-credential scanning.
+This repository uses restricted CI that exercises source tests, build and local
+database migrations without private Atlas infrastructure jobs. The
+[publication checklist](docs/source-release-checklist.md) tracks release gates,
+including Alembic migration review and independent history-wide secret scanning.
 
 ## Security and licensing
 
 - Never commit credentials, production connection strings, customer data, or
   exported Project/Ticket records.
 - See [Security reporting](SECURITY.md).
-- Telaryn is publicly viewable under the [proprietary source-available
-  notice](LICENSE), **not** an open-source license. An approved user may use
-  the hosted Telaryn application under its separate service Terms of Use.
+- If publicly visible, Telaryn remains governed by the [proprietary
+  source-available notice](LICENSE), **not** an open-source license. An approved
+  user may use the hosted application under separate service Terms of Use.
   Hosted-service use does not permit self-hosting or redistributing the code.
 - GitHub's platform terms allow viewing and forking a public repository;
   broader copying, modifying, or commercialization requires permission or
   another right under applicable law.
 - Ownership claims cover protectable original work, not general concepts
   or unprotectable ideas.
-- Exclusion from this preview does not erase material from the original private
-  repository's historical branches, commits, PRs, or Actions logs.
+- Publishing this repository reveals its own retained Git history and PR
+  discussions, including historical files since removed from the latest tree.
+  The separate, private Atlas operations repository is not part of this history.
