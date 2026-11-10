@@ -98,11 +98,21 @@ and runtime distributions have separate third-party obligations.
   Deleting a path from the current tree is not enough.
 - `frontend/public/icons.svg` contains identifiable Bluesky, Discord,
   GitHub, and X social-platform symbol artwork alongside generic icons.
-  The markup remains tracked in the current tree; no license or right to
-  redistribute third-party graphic expression has been established by this
-  review. Brand and trademark rights are not granted by access to this repository.
-  Determine provenance and permitted redistribution, or replace the artwork
-  with controlled alternatives before publishing.
+  The owner explicitly confirmed on 10 November 2026 that these symbols were
+  **not assets they supplied**. The same confirmation applies to the React/Vite
+  starter logos in the historical commits. These are third-party or inherited
+  template assets, **not first-party Telaryn/Atlas image creations**, and the
+  proprietary license makes no ownership claim over them. The social icon file
+  remains in the current tree; the React/Vite starter assets were removed
+  from the current tree but remain in prior commits.
+  The social glyphs are subject to their respective brand guidelines and
+  potentially copyright terms. For example,
+  [Bluesky's social-icon guidance](https://bsky.social/about/support/branding)
+  permits specified social profile linking, while
+  [GitHub's brand toolkit](https://brand.github.com/foundations/logo)
+  defines authorized uses of its logos. Neither gives Telaryn exclusive ownership
+  of those marks. Confirm the actual SVGs' origin/redistribution rights or
+  replace them; assess the historical starter-logo contents separately.
 - **Owner-provided provenance statement (9 November 2026):** The Telaryn
   owner confirmed they personally generated all four PNG assets remaining in
   the current source tree: `frontend/public/telaryn-apple-touch-icon.png`,
