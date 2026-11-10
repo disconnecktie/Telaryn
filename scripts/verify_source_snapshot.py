@@ -176,10 +176,17 @@ def main() -> int:
                     (IDENTITY_MIGRATION, "publication-safe migration review unresolved")
                 )
         review = (ROOT / "docs/source-release-checklist.md").read_text(encoding="utf-8")
+        # This guard is also run after a source-only publication. The post-publication
+        # record must preserve an explicit prohibition on production deployment;
+        # publication permission must never be interpreted as deployment permission.
         if "**Current disposition: NOT APPROVED FOR PUBLICATION.**" in review:
             findings.append(("<Owner approval>", "release checklist is still not approved"))
-        elif "**Current disposition: APPROVED FOR PUBLICATION.**" not in review:
-            findings.append(("<Owner approval>", "an explicit approval statement is required"))
+        elif (
+            "**Current disposition: APPROVED FOR PUBLICATION.**" not in review
+            and "**Current disposition: SOURCE PUBLICATION COMPLETED; PRODUCTION DEPLOYMENT NOT AUTHORIZED.**"
+            not in review
+        ):
+            findings.append(("<Owner approval>", "an explicit source publication disposition is required"))
     if findings:
         print(f"Release guard: {len(findings)} finding(s); no credential values shown")
         for path, category in findings:
