@@ -113,6 +113,17 @@ and runtime distributions have separate third-party obligations.
   independently verified exclusive copyright ownership or the generation
   platform's commercial/distribution terms. AI-generated elements may have
   limited copyright protection depending on jurisdiction and human authorship.
+- **Owner-provided historical Atlas provenance statement (10 November 2026):**
+  In response to the direct question about the four legacy Atlas icon PNGs and
+  historical `frontend/public/favicon.svg`, the owner confirmed they created
+  the Atlas and Telaryn images, including the historical Atlas branding.
+  This attests to the four `atlas-icon*.png` files and old favicon; these
+  remain accessible in the retained Git commit history even though removed
+  from the current tree. The statement does **not** establish provenance or
+  redistribution permission for the former React/Vite starter SVGs or the
+  current social-platform symbols in `frontend/public/icons.svg`. Ownership
+  and downstream reuse rights depend on human-authored expression, the image
+  generation platform's terms, and any third-party marks or source materials.
 
 ## Release handling
 
@@ -124,6 +135,8 @@ Privacy and Terms policies accurately describe its current behavior.
 **Status: JS/Python package metadata inventories complete; upstream license
 classifications for the three flagged Python packages checked against current
 official documentation; unused starter/legacy assets removed only from the
-current tree. Owner-attested provenance recorded for four current PNGs.
-Built-distribution license notices, social glyph provenance, generation-platform
-terms, historical asset ownership, and final legal/owner approval remain pending.**
+current tree. Owner-attested provenance recorded for four current PNGs
+and historical Atlas branding (four PNGs and an old favicon).
+Built-distribution notices, social glyph/starter-logo rights, image-generation
+platform terms, historical metadata/content review, and final owner/legal
+approval remain pending.**
