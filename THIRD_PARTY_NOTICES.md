@@ -200,6 +200,36 @@ protectable first-party expression, and it does not claim rights in third-party
 logos. No independent image-similarity or third-party-rights clearance has
 been performed.
 
+## Retained SVG historical inspection — 10 November 2026
+
+The existing Telaryn Git history is intentionally retained at the owner's direction.
+For the four former SVG paths below, GitHub commit-path history was retrieved from
+`release/source-candidate`, and each historical file's SVG text was examined
+at its original source-staging commit. The current release tree (434 Git tree
+entries at `2667306e777d`) contains none of these four paths.
+
+| Retained historical file | Source-staging commit | Inspection result and disposition |
+| --- | --- | --- |
+| `frontend/public/favicon.svg` | `4ed887bad53c` | Stylized Vite mark; no confirmed precise source version or independent trademark grant; historical only |
+| `frontend/src/assets/react.svg` | `e96f3e19eef7` | React atom mark with `iconify--logos` class; Iconify framework MIT license does **not** establish the license for a particular logo; historical only |
+| `frontend/src/assets/vite.svg` | `e96f3e19eef7` | Vite-branded SVG; create-vite template files are CC0 if that is the actual source, but exact provenance and trademark rights remain unverified; historical only |
+| `frontend/public/icons.svg` | `4ed887bad53c` | SVG sprite includes branded Bluesky, Discord, GitHub and X symbols plus generic icons; historical only; specific upstream artwork sources not established |
+
+Relevant upstream references:
+- [Vite create-vite LICENSE](https://github.com/vitejs/vite/blob/main/packages/create-vite/LICENSE): MIT for create-vite; CC0 for files in or generated from `template-*` directories.
+- [Iconify icon-set licenses](https://icon-sets.iconify.design/) and [Iconify license scope](https://github.com/iconify/iconify): icon data can have different terms from the MIT framework.
+- Brand usage guidance links appear in the historical asset table above.
+
+**Review disposition:** The owner selected keeping the existing repository history
+rather than doing a clean-history release. This resolves the *history strategy*
+question, not the historical-content authorization question. None of the four
+files appears in the current tree; old commits still expose them if the repository
+is made public. Existing evidence supports documenting these as third-party
+historical artifacts, not asserting exclusive rights to them. Exact-source
+attribution, any required notices, legal/trademark permissions, and review of
+other historical disclosures remain open. Do not treat this note as permission to
+publish, modify repository visibility, or ship compiled distributions.
+
 ## Release handling
 
 Before making this repository public, the owner should confirm the included
